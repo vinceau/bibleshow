@@ -111,14 +111,13 @@ function reset() {
     for (var i = st.lines.length; i >= 1; i--) {
         var el = $('.line' + i);
         if (el.is(':offscreen')) {
-            el.hide();
             continue;
         }
         //subtract the half showing element since it returns visible
         end = i - 1;
-        el.hide();
         break;
     }
+    hidelines(end + 1, st.lines.length);
     max_lines = end;
     check();
 }
