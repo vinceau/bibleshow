@@ -34,3 +34,21 @@ function exitFullscreen() {
 function currentlyFullscreen() {
     return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
 }
+
+function getlines(first, last) {
+    var sel = '';
+    for (var i = first; i < last; i++) {
+        sel += '.line' + i + ', ';
+    }
+    sel += '.line' + last;
+    return sel;
+}
+
+function hidelines(first, last) {
+    $(getlines(first, last)).hide();
+}
+
+function showlines(first, last) {
+    $(getlines(first, last)).show();
+}
+

@@ -47,23 +47,6 @@ body {
 //declare globals
 var st, max_lines, start, end;
 
-function getlines(first, last) {
-    var sel = '';
-    for (var i = first; i < last; i++) {
-        sel += '.line' + i + ', ';
-    }
-    sel += '.line' + last;
-    return sel;
-}
-
-function hidelines(first, last) {
-    $(getlines(first, last)).hide();
-}
-
-function showlines(first, last) {
-    $(getlines(first, last)).show();
-}
-
 function set_prev(enabled) {
     $('#prevButton').prop('disabled', !enabled);
 }
