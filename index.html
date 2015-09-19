@@ -64,13 +64,15 @@ function reset() {
     start = 1;
     end = 1;
     st.split();
-    for (var i = st.lines.length; i >= 1; i--) {
+    for (var i = 1; i <= st.lines.length; i++) {
         var el = $('.line' + i);
-        if (el.is(':offscreen')) {
+        if (!el.is(':offscreen')) {
             continue;
         }
+        //i is the first element that's hidden completely
         //subtract the half showing element since it returns visible
-        end = i - 1;
+        //and subtract one more to specify the last shown line
+        end = i - 2;
         break;
     }
     hidelines(end + 1, st.lines.length);
