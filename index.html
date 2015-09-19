@@ -78,9 +78,16 @@ function reset() {
     check();
 }
 
-$(window).resize(function() {
+function toggleFullscreen() {
+    if (currentlyFullscreen()) {
+        exitFullscreen();
+        $('#fullButton').html('Fullscreen');
+    } else {
+        launchIntoFullscreen(document.body);
+        $('#fullButton').html('Exit Fullscreen');
+    }
     reset();
-});
+}
 
 window.Bindings = Keys.Bindings;
 window.Combo    = Keys.Combo;
@@ -108,16 +115,9 @@ bindings.load({
     }
 });
 
-function toggleFullscreen() {
-    if (currentlyFullscreen()) {
-        exitFullscreen();
-        $('#fullButton').html('Fullscreen');
-    } else {
-        launchIntoFullscreen(document.body);
-        $('#fullButton').html('Exit Fullscreen');
-    }
+$(window).resize(function() {
     reset();
-}
+});
 
 reset();
     </script>
