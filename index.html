@@ -65,35 +65,83 @@ body {
         </div>
     </div>
     <script src="static/jquery-2.1.3.min.js"></script>
+    <script src="static/jquery.visible.min.js"></script>
+    <script src="static/SplitText.min.js"></script>
     <script src="static/keys.min.js"></script>
     <script>
-function check() {
-    var el = $('#text_body');
-    var margin = parseFloat(el.css('margin-top'), 10);
-    $('#prevButton').prop('disabled', margin == 0);
-    $('#nextButton').prop('disabled', el.height() - Math.abs(margin) <= $('#content').height());
+var st;
+var max_lines;
+var start = 1;
+var end = 1;
+
+function getlines(first, last) {
+    var sel = '';
+    for (var i = first; i < last; i++) {
+        sel += '.line' + i + ', ';
+    }
+    sel += '.line' + last;
+    return sel;
 }
-check();
+
+function hidelines(first, last) {
+    $(getlines(first, last)).hide();
+}
+
+function showlines(first, last) {
+    $(getlines(first, last)).show();
+}
+
+function set_prev(enabled) {
+    $('#prevButton').prop('disabled', !enabled);
+}
+
+function set_next(enabled) {
+    $('#nextButton').prop('disabled', !enabled);
+}
+
+function check() {
+    set_prev(start > 1);
+    set_next(end < st.lines.length);
+}
 
 function next() {
-    var el = $('#text_body');
-    var cur_margin = parseFloat(el.css('margin-top'), 10);
-    var new_margin = cur_margin - $('#content').height();
-    if (cur_margin <= 0 && Math.abs(new_margin) < el.height()) {
-        el.css('margin-top', new_margin);
+    if (end < st.lines.length) {
+        hidelines(start, end);
+        start += max_lines;
+        end += max_lines;
+        showlines(start, end);
+        check();
     }
-    check();
 }
+
 function prev() {
-    var margin = parseFloat($('#text_body').css('margin-top'), 10);
-    if (margin < 0) {
-        $('#text_body').css('margin-top', margin + $("#content").height());
+    if (start > 1) {
+        hidelines(start, end);
+        start -= max_lines;
+        end -= max_lines;
+        showlines(start, end);
+        check();
     }
-    check();
 }
 
 function reset() {
-    $('#text_body').css('margin-top', 0);
+    if (st) {
+        st.revert();
+    }
+    st = new SplitText("#text_body", {
+        type: "lines",
+        linesClass: "line line++",
+    });
+    for (var i = st.lines.length; i >= 1; i--) {
+        var el = $('.line' + i);
+        if (!el.visible()) {
+            el.hide();
+            continue;
+        }
+        end = i;
+        break;
+    }
+    max_lines = end;
     check();
 }
 
@@ -126,6 +174,8 @@ bindings.load({
         handler: prev
     }
 });
+
+reset();
     </script>
 </body>
 </html>
