@@ -39,7 +39,7 @@ body {
         </div>
     </div>
     <script src="static/jquery-2.1.3.min.js"></script>
-    <script src="static/jquery.visible.min.js"></script>
+    <script src="static/scripts.js"></script>
     <script src="static/SplitText.min.js"></script>
     <script src="static/keys.min.js"></script>
     <script>
@@ -108,11 +108,13 @@ function reset() {
     });
     for (var i = st.lines.length; i >= 1; i--) {
         var el = $('.line' + i);
-        if (!el.visible()) {
+        if (el.is(':offscreen')) {
             el.hide();
             continue;
         }
-        end = i;
+        //subtract the half showing element since it returns visible
+        end = i - 1;
+        el.hide();
         break;
     }
     max_lines = end;
