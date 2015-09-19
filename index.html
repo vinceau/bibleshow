@@ -21,7 +21,11 @@
     <script src="static/keys.min.js"></script>
     <script>
 //declare globals
-var st, max_lines, start, end;
+var max_lines, start, end;
+var st = new SplitText("#text_body", {
+    type: "lines",
+    linesClass: "line++",
+});
 
 function set_prev(enabled) {
     $('#prevButton').prop('disabled', !enabled);
@@ -59,13 +63,7 @@ function prev() {
 function reset() {
     start = 1;
     end = 1;
-    if (st) {
-        st.revert();
-    }
-    st = new SplitText("#text_body", {
-        type: "lines",
-        linesClass: "line line++",
-    });
+    st.split();
     for (var i = st.lines.length; i >= 1; i--) {
         var el = $('.line' + i);
         if (el.is(':offscreen')) {
