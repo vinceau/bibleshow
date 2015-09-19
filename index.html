@@ -28,6 +28,7 @@ body {
 </head>
 <body>
     <div id="controls">
+        <button id="fullButton" onclick="toggleFullscreen()">Fullscreen</button>
         <button id="prevButton" onclick="prev()">Prev</button>
         <button id="nextButton" onclick="next()">Next</button>
     </div>
@@ -151,6 +152,17 @@ bindings.load({
         handler: prev
     }
 });
+
+function toggleFullscreen() {
+    if (currentlyFullscreen()) {
+        exitFullscreen();
+        $('#fullButton').html('Fullscreen');
+    } else {
+        launchIntoFullscreen(document.body);
+        $('#fullButton').html('Exit Fullscreen');
+    }
+    reset();
+}
 
 reset();
     </script>
