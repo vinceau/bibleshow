@@ -1,0 +1,101 @@
+<html>
+<head>
+    <style>
+body {
+    background-color:black;
+    color: white;
+}
+
+#content {
+    font-size: 250%;
+    height: 90%;
+    overflow:hidden;
+}
+
+#controls {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 300%;
+    height: 10%;
+}
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <button id="prevButton" onclick="prev()">Prev</button>
+        <button id="nextButton" onclick="next()">Next</button>
+    </div>
+    <div id="header">
+        Generic Title
+    </div>
+    <div id="content">
+        <div id="text_body"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet odio sapien. Sed lacus purus, faucibus a ipsum eget, placerat blandit libero. Sed sit amet odio convallis, faucibus nulla in, vestibulum urna. Fusce et consequat urna, sit amet vestibulum libero. Mauris id velit nunc. Mauris ac erat condimentum, consectetur augue sed, aliquam justo. Sed laoreet tempor velit vel varius. Donec vitae ligula dignissim, sagittis augue in, aliquam turpis. Cras imperdiet dui id tristique vehicula. Sed euismod, nibh at ultricies fringilla, nisi enim viverra velit, viverra imperdiet nisl sapien sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris sagittis, arcu sed condimentum placerat, nisi tortor ultrices urna, a aliquet felis risus et neque. Etiam vel porta nulla.
+            </p><p>
+
+            Nunc id libero in lorem convallis aliquam sed nec est. Cras in dictum nisi. Suspendisse sed purus quam. Nulla ultricies dolor sem, non commodo nunc ornare et. Morbi viverra massa dolor, a pharetra orci commodo non. Vestibulum lobortis pretium quam, sed efficitur nisi lacinia id. Pellentesque pretium erat eu ipsum sodales pharetra. Suspendisse eu tortor massa. Duis ut suscipit mauris. Integer lectus odio, aliquam vel lectus nec, scelerisque pretium enim. Sed imperdiet velit eget sollicitudin malesuada. Mauris ipsum nulla, varius ac magna sed, fringilla rutrum nibh. Nam augue felis, faucibus sodales efficitur nec, scelerisque id diam. Sed in libero condimentum, convallis felis at, aliquet ex. Sed vitae tincidunt nisi. Proin tincidunt nisl quis leo pellentesque, nec vehicula tortor condimentum.
+            </p><p>
+
+            In ut erat vitae orci feugiat tincidunt. Nullam commodo congue risus ultrices lobortis. Donec justo turpis, viverra id lectus et, cursus eleifend turpis. Aenean eu turpis eu turpis facilisis vestibulum a a orci. Aliquam erat volutpat. Mauris vel leo tincidunt, scelerisque lacus eu, vehicula urna. Aliquam erat volutpat. Aenean dignissim eget nisi id lobortis. Pellentesque at dignissim arcu.
+
+            </p><p>
+            Pellentesque dolor ex, tristique quis porttitor nec, venenatis convallis turpis. Nullam ante lectus, aliquam sit amet nisi et, porttitor imperdiet lacus. Nunc congue convallis mauris, id maximus lectus aliquet luctus. Phasellus a nisl vel metus euismod congue vitae in quam. Maecenas eget molestie lectus. Nunc a ligula in nunc accumsan accumsan sed a dui. Sed at rutrum erat. Maecenas interdum arcu non sapien pellentesque efficitur. Aenean consectetur, mi posuere accumsan dignissim, lacus enim efficitur turpis, in eleifend velit sapien id eros. Sed sodales sagittis pulvinar. Integer dolor tellus, varius vel dignissim ut, elementum ac magna. Nullam fermentum diam sapien, et convallis ante condimentum sit amet.
+
+            </p><p>
+            Curabitur tristique, lectus et faucibus varius, libero turpis dapibus orci, sed consequat ante tellus eu risus. Pellentesque posuere tincidunt lectus. Suspendisse sagittis scelerisque massa, sit amet aliquam dui congue eget. Praesent efficitur at urna ut interdum. Integer quis elementum dui. Cras vitae justo varius felis vehicula facilisis id vel ligula. Vestibulum aliquet tortor eu est aliquam convallis. Donec tristique dui ac urna varius euismod. Aenean ac nisl urna. Curabitur at ipsum molestie, congue turpis in, finibus leo. Morbi in urna dolor.
+            </p><p>
+
+            Sed sed urna eget metus rhoncus pretium id ut tortor. Maecenas blandit iaculis nulla non molestie. Curabitur vel tristique ante. Proin fringilla aliquet arcu sit amet pretium. Curabitur laoreet velit eu ipsum lobortis pharetra. Phasellus auctor, ipsum fringilla rhoncus aliquet, felis enim venenatis quam, et laoreet justo libero ut lectus. Suspendisse faucibus laoreet lectus at suscipit. Curabitur et justo finibus, varius ipsum id, lacinia nisi. Proin aliquet blandit lacus, nec vestibulum ipsum convallis sit amet. Nullam gravida bibendum neque. Mauris tincidunt purus nisl, vel gravida quam malesuada non.
+            </p><p>
+
+            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec euismod sollicitudin ipsum, eu mollis augue vestibulum id. Phasellus iaculis leo tellus, eu pulvinar quam elementum et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque eleifend congue sapien. Praesent tortor metus, porttitor ac congue nec, malesuada et odio. Maecenas nec pharetra arcu. Etiam ac magna tortor. Proin quis metus a est congue viverra vel lobortis neque.
+            </p><p>
+
+            Praesent sagittis semper felis. Donec imperdiet tempor dolor ut commodo. Mauris ultrices, nisi sit amet finibus viverra, lacus magna facilisis lorem, et molestie sem libero quis lorem. Donec aliquam augue eu erat suscipit fermentum. Maecenas a nibh at erat consequat sagittis in sed enim. Nunc sodales risus quis urna lobortis imperdiet. Praesent nisl ligula, pulvinar non condimentum ac, iaculis ac tortor. Integer et commodo velit. Aliquam feugiat diam a quam finibus facilisis. Duis rutrum viverra vestibulum. Ut volutpat tellus vel velit euismod auctor. Mauris bibendum nibh quis lectus malesuada, in malesuada orci tincidunt. Vestibulum efficitur erat sed risus cursus placerat. Sed auctor quam vel elit commodo, sed mattis urna posuere. Cras eros eros, tincidunt sed suscipit ac, varius vitae sem.
+
+            </p><p>
+            Suspendisse semper semper mauris sed lacinia. Vivamus sem urna, condimentum nec velit rutrum, placerat ullamcorper purus. Aliquam odio eros, malesuada nec turpis nec, fermentum molestie leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed condimentum tincidunt ligula quis gravida. Morbi convallis dolor vel mauris maximus suscipit. Quisque vestibulum quam at rhoncus imperdiet. Donec malesuada ipsum eu tincidunt rutrum.
+            </p><p>
+            Suspendisse ante eros, efficitur non maximus eget, consequat ac lectus. Curabitur vel nibh pretium, ullamcorper odio non, scelerisque tellus. Aliquam felis odio, consequat eu molestie sed, dapibus in lacus. Aliquam eget convallis ante. Curabitur a eleifend velit, eget suscipit quam. Nunc facilisis, erat quis luctus varius, nunc tortor dictum urna, et aliquet diam augue quis mauris. Vivamus aliquam suscipit augue eu interdum.</p>
+        </div>
+    </div>
+    <script src="static/jquery-2.1.3.min.js"></script>
+    <script>
+function check() {
+    var el = $('#text_body');
+    var margin = parseFloat(el.css('margin-top'), 10);
+    $('#prevButton').prop('disabled', margin == 0);
+    $('#nextButton').prop('disabled', el.height() - Math.abs(margin) <= $('#content').height());
+}
+check();
+
+function next() {
+    var el = $('#text_body');
+    var cur_margin = parseFloat(el.css('margin-top'), 10);
+    var new_margin = cur_margin - $('#content').height();
+    if (cur_margin <= 0 && Math.abs(new_margin) < el.height()) {
+        el.css('margin-top', new_margin);
+    }
+    check();
+}
+function prev() {
+    var margin = parseFloat($('#text_body').css('margin-top'), 10);
+    if (margin < 0) {
+        $('#text_body').css('margin-top', margin + $("#content").height());
+    }
+    check();
+}
+
+function reset() {
+    $('#text_body').css('margin-top', 0);
+    check();
+}
+    </script>
+</body>
+</html>
+
