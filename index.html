@@ -127,9 +127,9 @@ bindings.load({
     }
 });
 
-$(window).resize(function() {
+$(window).on('resize', debounce(function() {
     reset();
-});
+}, 200));
 
 $('#searchButton').click(function() {
     load_passage($('#search').val());
