@@ -56,8 +56,19 @@ function prev() {
     }
 }
 
-function reset() {
-    st.split();
+function reset(hard=false) {
+    if (hard) {
+        console.log('hard reset');
+        //create a new SplitText object with current text
+        st = new SplitText("#text_body", {
+            type: "lines",
+            linesClass: "line++",
+        });
+    } else {
+        console.log('soft reset');
+        //resplit the current text without creating new SplitText object
+        st.split();
+    }
     start = 1;
     end = st.lines.length;
     for (var i = 1; i <= end; i++) {
@@ -83,11 +94,7 @@ function load_passage(passage) {
         $('#header').html(passage);
         $('#search').val(passage);
         $('#text_body').html(data.text);
-        st = new SplitText("#text_body", {
-            type: "lines",
-            linesClass: "line++",
-        });
-        reset();
+        reset(true);
     }).fail(function() {
         $('#header').html('Error');
         $('#text_body').html('Couldn\'t find passage: ' + passage);
