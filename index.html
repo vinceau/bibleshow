@@ -19,11 +19,7 @@
     <script src="static/keys.min.js"></script>
     <script>
 //declare globals
-var max_lines, start, end;
-var st = new SplitText("#text_body", {
-    type: "lines",
-    linesClass: "line++",
-});
+var st, max_lines, start, end;
 
 function set_prev(enabled) {
     $('#prevButton').prop('disabled', !enabled);
