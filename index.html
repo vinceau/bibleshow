@@ -6,7 +6,7 @@
     <div id="controls">
         <input type="text" id="search"></input>
         <button id="searchButton">Search</button>
-        <button id="fullButton" onclick="toggleFullscreen()">Fullscreen</button>
+        <button id="fullButton">Toggle Fullscreen</button>
         <button id="prevButton" onclick="prev()">Prev</button>
         <button id="nextButton" onclick="next()">Next</button>
     </div>
@@ -76,17 +76,6 @@ function reset() {
     check();
 }
 
-function toggleFullscreen() {
-    if (currentlyFullscreen()) {
-        exitFullscreen();
-        $('#fullButton').html('Fullscreen');
-    } else {
-        launchIntoFullscreen(document.body);
-        $('#fullButton').html('Exit Fullscreen');
-    }
-    reset();
-}
-
 function load_passage(passage) {
     var bible_url = 'https://api.biblia.com/v1/bible/content/LEB.json?key=fd37d8f28e95d3be8cb4fbc37e15e18e&style=simpleParagraphs&passage=';
     $.getJSON(bible_url + passage, function(data) {
@@ -137,6 +126,15 @@ $(window).resize(function() {
 
 $('#searchButton').click(function() {
     load_passage($('#search').val());
+});
+
+$('#fullButton').click(function() {
+    if (currentlyFullscreen()) {
+        exitFullscreen();
+    } else {
+        launchIntoFullscreen(document.body);
+    }
+    reset();
 });
 
 load_passage('Genesis 1');
