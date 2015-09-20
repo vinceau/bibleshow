@@ -86,27 +86,16 @@ function toggleFullscreen() {
 }
 
 function load_passage(passage) {
-    var bible_url = 'https://api.biblia.com/v1/bible/content/LEB.json?key=fd37d8f28e95d3be8cb4fbc37e15e18e&passage='
-    $.ajax({
-        type: 'GET',
-        url: bible_url + passage,
-        dataType: 'json',
-        crossDomain: true,
-        success: function(data) {
-            if($.trim(data) == "false") {
-                console.log("Fail to recived data");
-            }
-            else {
-                console.log("Successfully data recived");
-                $('#header').html(passage);
-                $('#text_body').html(data.text);
-                st = new SplitText("#text_body", {
-                    type: "lines",
-                    linesClass: "line++",
-                });
-                reset();
-            }
-        }
+    var bible_url = 'https://api.biblia.com/v1/bible/content/LEB.json?key=fd37d8f28e95d3be8cb4fbc37e15e18e&style=simpleParagraphs&passage=';
+    $.getJSON(bible_url + passage, function(data) {
+        console.log("Successfully data recived");
+        $('#header').html(passage);
+        $('#text_body').html(data.text);
+        st = new SplitText("#text_body", {
+            type: "lines",
+            linesClass: "line++",
+        });
+        reset();
     });
 }
 
