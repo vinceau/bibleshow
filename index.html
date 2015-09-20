@@ -55,10 +55,10 @@ function prev() {
 }
 
 function reset() {
-    start = 1;
-    end = 1;
     st.split();
-    for (var i = 1; i <= st.lines.length; i++) {
+    start = 1;
+    end = st.lines.length;
+    for (var i = 1; i <= end; i++) {
         var el = $('.line' + i);
         if (!el.is(':offscreen')) {
             continue;
