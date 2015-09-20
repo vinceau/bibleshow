@@ -12,7 +12,9 @@ function getlines(first, last) {
     for (var i = first; i < last; i++) {
         sel += '.line' + i + ', ';
     }
-    sel += '.line' + last;
+    if (first < last) {
+        sel += '.line' + last;
+    }
     return sel;
 }
 
