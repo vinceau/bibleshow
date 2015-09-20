@@ -4,6 +4,8 @@
 </head>
 <body>
     <div id="controls">
+        <input type="text" id="search"></input>
+        <button id="searchButton">Search</button>
         <button id="fullButton" onclick="toggleFullscreen()">Fullscreen</button>
         <button id="prevButton" onclick="prev()">Prev</button>
         <button id="nextButton" onclick="next()">Next</button>
@@ -90,6 +92,7 @@ function load_passage(passage) {
     $.getJSON(bible_url + passage, function(data) {
         console.log("Successfully data recived");
         $('#header').html(passage);
+        $('#search').val(passage);
         $('#text_body').html(data.text);
         st = new SplitText("#text_body", {
             type: "lines",
@@ -127,6 +130,10 @@ bindings.load({
 
 $(window).resize(function() {
     reset();
+});
+
+$('#searchButton').click(function() {
+    load_passage($('#search').val());
 });
 
 load_passage('Genesis 1');
