@@ -99,6 +99,9 @@ function load_passage(passage) {
             linesClass: "line++",
         });
         reset();
+    }).fail(function() {
+        $('#header').html('Error');
+        $('#text_body').html('Couldn\'t find passage: ' + passage);
     });
 }
 
