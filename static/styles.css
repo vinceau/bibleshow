@@ -1,12 +1,17 @@
 body {
     background-color:black;
     color: white;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
 }
 
 #content {
     font-size: 250%;
-    height: 90%;
-    overflow:hidden;
 }
 
 #controls {
