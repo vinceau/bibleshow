@@ -138,11 +138,7 @@ $('#searchButton').click(function() {
 });
 
 $('#fullButton').click(function() {
-    if (currentlyFullscreen()) {
-        exitFullscreen();
-    } else {
-        launchIntoFullscreen(document.body);
-    }
+    toggleFullscreen();
     reset();
 });
 

@@ -25,3 +25,11 @@ function exitFullscreen() {
 function currentlyFullscreen() {
     return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
 }
+
+function toggleFullscreen() {
+    if (currentlyFullscreen()) {
+        exitFullscreen();
+    } else {
+        launchIntoFullscreen(document.body);
+    }
+}
