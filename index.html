@@ -19,6 +19,7 @@
     <script src="static/scripts.js"></script>
     <script src="static/SplitText.min.js"></script>
     <script src="static/keys.min.js"></script>
+    <script src="static/js.cookie.js"></script>
     <script>
 //declare globals
 var st, max_lines, start, end;
@@ -95,6 +96,7 @@ function load_passage(passage) {
         $('#search').val(passage);
         $('#text_body').html(data.text);
         reset(true);
+        Cookies.set('passage', passage);
     }).fail(function() {
         $('#header').html('Error');
         $('#text_body').html('Couldn\'t find passage: ' + passage);
@@ -144,7 +146,12 @@ $('#fullButton').click(function() {
     reset();
 });
 
-load_passage('Genesis 1');
+var passage = Cookies.get('passage');
+if (passage) {
+    load_passage(passage);
+} else {
+    load_passage('Genesis 1');
+}
     </script>
 </body>
 </html>
