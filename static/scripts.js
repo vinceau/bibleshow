@@ -1,18 +1,9 @@
-//method for :offscreen method
-jQuery.expr.filters.offscreen = function(el) {
-    return (
-            (el.offsetLeft + el.offsetWidth) < 0 
-            || (el.offsetTop + el.offsetHeight) < 0
-            || (el.offsetLeft > window.innerWidth || el.offsetTop > window.innerHeight)
-           );
-};
-
 function getlines(first, last) {
     var sel = '';
     for (var i = first; i < last; i++) {
         sel += '.line' + i + ', ';
     }
-    if (first < last) {
+    if (first <= last) {
         sel += '.line' + last;
     }
     return sel;
@@ -44,3 +35,10 @@ function debounce(func, wait, immediate) {
         if (callNow) func.apply(context, args);
     };
 };
+
+jQuery.fn.fits = function(){
+    var bounds = this.offset(); //Coordinates of current element
+    bounds.right = bounds.left + this.outerWidth();
+    bounds.bottom = bounds.top + this.outerHeight();
+    return ($(window).height() >= bounds.bottom && $(window).width() >= bounds.right);
+}

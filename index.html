@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="static/styles.css">
@@ -74,13 +75,12 @@ function reset(hard=false) {
     end = st.lines.length;
     for (var i = 1; i <= end; i++) {
         var el = $('.line' + i);
-        if (!el.is(':offscreen')) {
+        if (el.fits()) {
             continue;
         }
         //i is the first element that's hidden completely
-        //subtract the half showing element since it returns visible
-        //and subtract one more to specify the last shown line
-        end = i - 2;
+        //so subtract one to specify the last shown line
+        end = i - 1;
         break;
     }
     hidelines(end + 1, st.lines.length);
