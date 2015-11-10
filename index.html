@@ -5,8 +5,10 @@
 </head>
 <body>
     <div id="controls">
-        <input type="text" id="search" />
-        <button id="searchButton">Search</button>
+        <form id="search_form">
+            <input type="text" id="search" />
+            <input type="submit" value="Search" />
+        </form>
         <button id="fullButton">Toggle Fullscreen</button>
         <button id="prevButton" onclick="prev()">Prev</button>
         <button id="nextButton" onclick="next()">Next</button>
@@ -133,7 +135,8 @@ $(window).on('resize', debounce(function() {
     reset();
 }, 200));
 
-$('#searchButton').click(function() {
+$('#search_form').submit(function(e) {
+    e.preventDefault();
     load_passage($('#search').val());
 });
 
