@@ -138,6 +138,7 @@ $(window).on('resize', debounce(function() {
 $('#search_form').submit(function(e) {
     e.preventDefault();
     load_passage($('#search').val());
+    $('#search').blur();
 });
 
 $('#fullButton').click(function() {
