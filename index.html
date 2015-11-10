@@ -148,12 +148,11 @@ $('#fullButton').click(function() {
 
 $(document).ready(function() {
     var passage = Cookies.get('passage');
-    if (passage) {
-        load_passage(passage);
-    } else {
-        load_passage('Gen 1');
-        $('#search').val('Gen 1');
+    if (!passage) {
+        passage = 'Gen 1';
     }
+    load_passage(passage);
+    $('#search').val(passage);
 });
     </script>
 </body>
