@@ -145,12 +145,15 @@ $('#fullButton').click(function() {
     reset();
 });
 
-var passage = Cookies.get('passage');
-if (passage) {
-    load_passage(passage);
-} else {
-    load_passage('Genesis 1');
-}
+$(document).ready(function() {
+    var passage = Cookies.get('passage');
+    if (passage) {
+        load_passage(passage);
+    } else {
+        load_passage('Gen 1');
+        $('#search').val('Gen 1');
+    }
+});
     </script>
 </body>
 </html>
