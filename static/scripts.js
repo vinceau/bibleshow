@@ -9,12 +9,12 @@ function getlines(first, last) {
     return sel;
 }
 
-function hidelines(first, last) {
-    $(getlines(first, last)).hide();
+function hidelines(sel, first, last) {
+    $(sel).find(getlines(first, last)).hide();
 }
 
-function showlines(first, last) {
-    $(getlines(first, last)).show();
+function showlines(sel, first, last) {
+    $(sel).find(getlines(first, last)).show();
 }
 
 // Returns a function, that, as long as it continues to be invoked, will not
