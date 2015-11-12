@@ -57,7 +57,7 @@ function next() {
     }
     else if (curr_block < blocks.length - 1) {
         set_block(curr_block + 1);
-        hide_initial();
+        go_to_start();
     }
 }
 
@@ -71,16 +71,41 @@ function prev() {
     }
     else if (curr_block > 0) {
         set_block(curr_block - 1);
-        if (total_lines[curr_block] % max_lines == 0) {
-            start = total_lines - max_lines + 1;
-        } else {
-            start = Math.floor(total_lines[curr_block] / max_lines) * max_lines + 1;
-        }
-        end = start + max_lines - 1;
-        hidelines('#block' + curr_block, 1, start - 1);
-        showlines('#block' + curr_block, start, end);
-        check();
+        go_to_end();
     }
+}
+
+function go_to_start() {
+    /* Goes to the first slide of the current block */
+    $('#block' + curr_block + ' div').show();
+    start = 1;
+    end = total_lines[curr_block];
+    for (var i = 1; i <= end; i++) {
+        var el = $('#block' + curr_block + ' .line' + i);
+        if (el.fits()) {
+            continue;
+        }
+        //i is the first element that's hidden completely
+        //so subtract one to specify the last shown line
+        end = i - 1;
+        break;
+    }
+    hidelines('#block' + curr_block, end + 1, total_lines[curr_block]);
+    max_lines = end;
+}
+
+
+function go_to_end() {
+    /* Goes to the last slide of the current block */
+    if (total_lines[curr_block] % max_lines == 0) {
+        start = total_lines - max_lines + 1;
+    } else {
+        start = Math.floor(total_lines[curr_block] / max_lines) * max_lines + 1;
+    }
+    end = start + max_lines - 1;
+    hidelines('#block' + curr_block, 1, start - 1);
+    showlines('#block' + curr_block, start, end);
+    check();
 }
 
 function reset(hard=false) {
@@ -101,26 +126,8 @@ function reset(hard=false) {
         total_lines[i] = $('#block' + i + ' div').length;
     }
     set_block(curr_block);
-    hide_initial();
+    go_to_start();
     check();
-}
-
-function hide_initial() {
-    $('#block' + curr_block + ' div').show();
-    start = 1;
-    end = total_lines[curr_block];
-    for (var i = 1; i <= end; i++) {
-        var el = $('#block' + curr_block + ' .line' + i);
-        if (el.fits()) {
-            continue;
-        }
-        //i is the first element that's hidden completely
-        //so subtract one to specify the last shown line
-        end = i - 1;
-        break;
-    }
-    hidelines('#block' + curr_block, end + 1, total_lines[curr_block]);
-    max_lines = end;
 }
 
 function set_block(index) {
