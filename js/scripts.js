@@ -36,6 +36,20 @@ function debounce(func, wait, immediate) {
     };
 };
 
+function inc_fontsize() {
+    var s = parseFloat($('#content').css('font-size')) * 1.1;
+    $('#content').css('font-size', s);
+    reset();
+    Cookies.set('fontsize', s);
+}
+
+function dec_fontsize() {
+    var s = parseFloat($('#content').css('font-size')) * 0.9;
+    $('#content').css('font-size', s);
+    reset();
+    Cookies.set('fontsize', s);
+}
+
 jQuery.fn.fits = function(){
     var bounds = this.offset(); //Coordinates of current element
     bounds.right = bounds.left + this.outerWidth();
