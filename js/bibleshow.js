@@ -181,11 +181,33 @@ $('#fullButton').click(function() {
     reset();
 });
 
-$(document).ready(function() {
+function restore_settings() {
     var passage = Cookies.get('passage');
     if (!passage) {
         passage = 'Gen 1';
     }
     load_passage(passage);
     $('#search').val(passage);
+    var margin = parseFloat(Cookies.get('margin'));
+    if (margin) {
+        $('#content').css('margin-left', margin);
+        $('#content').css('margin-right', margin);
+    }
+    var fontsize = parseFloat(Cookies.get('fontsize'));
+    if (fontsize) {
+        $('#content').css('font-size', fontsize);
+    }
+}
+
+function reset_settings() {
+    $('#content').css('margin-left', '');
+    $('#content').css('margin-right', '');
+    $('#content').css('font-size', '');
+    reset();
+    Cookies.remove('margin');
+    Cookies.remove('fontsize');
+}
+
+$(document).ready(function() {
+    restore_settings();
 });
