@@ -50,6 +50,22 @@ function dec_fontsize() {
     Cookies.set('fontsize', s);
 }
 
+function inc_margin() {
+    var m = parseFloat($('#content').css('margin-right')) * 1.1;
+    $('#content').css('margin-left', m);
+    $('#content').css('margin-right', m);
+    reset();
+    Cookies.set('margin', m);
+}
+
+function dec_margin() {
+    var m = parseFloat($('#content').css('margin-right')) * 0.9;
+    $('#content').css('margin-left', m);
+    $('#content').css('margin-right', m);
+    reset();
+    Cookies.set('margin', m);
+}
+
 jQuery.fn.fits = function(){
     var bounds = this.offset(); //Coordinates of current element
     bounds.right = bounds.left + this.outerWidth();
