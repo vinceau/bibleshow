@@ -66,6 +66,20 @@ function dec_margin() {
     Cookies.set('margin', m);
 }
 
+function inc_lineheight() {
+    var l = parseFloat($('#content').css('line-height')) * 1.1;
+    $('#content').css('line-height', l + 'px');
+    reset();
+    Cookies.set('lineheight', l);
+}
+
+function dec_lineheight() {
+    var l = parseFloat($('#content').css('line-height')) * 0.9;
+    $('#content').css('line-height', l + 'px');
+    reset();
+    Cookies.set('lineheight', l);
+}
+
 jQuery.fn.fits = function(){
     var bounds = this.offset(); //Coordinates of current element
     bounds.right = bounds.left + this.outerWidth();

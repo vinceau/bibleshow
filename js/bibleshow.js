@@ -197,15 +197,21 @@ function restore_settings() {
     if (fontsize) {
         $('#content').css('font-size', fontsize);
     }
+    var lineheight = parseFloat(Cookies.get('lineheight'));
+    if (lineheight) {
+        $('#content').css('line-height', lineheight + 'px');
+    }
 }
 
 function reset_settings() {
     $('#content').css('margin-left', '');
     $('#content').css('margin-right', '');
     $('#content').css('font-size', '');
+    $('#content').css('line-height', '');
     reset();
     Cookies.remove('margin');
     Cookies.remove('fontsize');
+    Cookies.remove('lineheight');
 }
 
 $(document).ready(function() {

@@ -13,6 +13,7 @@ body {
 #content {
     font-size: 250%;
     margin: 0 5%;
+    line-height: 60px;
 }
 
 #controls {
