@@ -81,7 +81,7 @@ function go_to_end() {
     check();
 }
 
-function reset(hard=false) {
+function reset(hard) {
     $('.passage').show();
     if (hard) {
         console.log('hard reset');
