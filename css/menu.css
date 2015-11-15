@@ -1,0 +1,162 @@
+.menu,
+.menu::after,
+.pusher {
+    height: 100%;
+}
+#content-wrapper,
+.menu,
+.menu-icon,
+.menu::after,
+.pusher,
+.top-bar {
+    position: absolute;
+    top: 0;
+}
+#content-wrapper {
+    height: 100%;
+    width: 100%;
+}
+.pusher {
+    left: 0;
+    z-index: 99;
+    -webkit-transition: -webkit-transform .5s;
+    transition: transform .5s;
+}
+.menu {
+    left: 0;
+    z-index: 100;
+    visibility: hidden;
+    width: 250px;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+.menu::after {
+    right: 0;
+    width: 100%;
+    content: '';
+    opacity: 1;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+    display: none;
+}
+.menu-open .pusher {
+    -webkit-transform: translate3d(250px, 0, 0);
+    transform: translate3d(250px, 0, 0);
+}
+.menu {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+}
+.menu-open .menu {
+    visibility: visible;
+    -webkit-transition: -webkit-transform .5s;
+    transition: transform .5s;
+}
+.top-bar {
+    width: 100%;
+    height: 50px;
+    background: 0 0;
+}
+.menu-icon,
+.top-bar {
+    left: 0;
+}
+.menu-icon {
+    background: 0 0;
+    font-size: 10px;
+    z-index: 599;
+    width: 2em;
+    height: 0;
+    padding: 2.5em 1.6em;
+    display: block;
+    cursor: pointer;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.menu-icon .title {
+    float: left;
+    margin-left: 30px;
+    margin-top: -11px;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    font-weight: 300;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    transition: all .5s ease;
+}
+@media only screen and (max-width: 950px) {
+    .menu-icon .title {
+        opacity: 0;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .menu-icon .title {
+        display: none;
+    }
+}
+.menu-icon span {
+    position: relative;
+    display: block;
+}
+.menu-icon:hover span,
+.menu-icon:hover span:after,
+.menu-icon:hover span:before {
+    opacity: .7;
+}
+.menu-icon span:after,
+.menu-icon span:before {
+    position: absolute;
+    margin-top: -.6em;
+    content: " ";
+}
+.menu-icon span:after {
+    margin-top: .6em;
+}
+.menu-icon.active span {
+    background: 0 0;
+}
+.menu-icon.active span:before {
+    -webkit-transform: rotate(45deg) translate(.5em, .4em);
+    -moz-transform: rotate(45deg) translate(.5em, .4em);
+    -ms-transform: rotate(45deg) translate(.5em, .4em);
+    -o-transform: rotate(45deg) translate(.5em, .4em);
+    transform: rotate(45deg) translate(.5em, .4em);
+}
+.menu-icon.active span:after {
+    -webkit-transform: rotate(-45deg) translate(.45em, -.35em);
+    -moz-transform: rotate(-45deg) translate(.45em, -.35em);
+    -ms-transform: rotate(-45deg) translate(.45em, -.35em);
+    -o-transform: rotate(-45deg) translate(.45em, -.35em);
+    transform: rotate(-45deg) translate(.45em, -.35em);
+}
+.menu,
+.menu-icon .title {
+    font-family: Open Sans, Arial, sans-serif;
+}
+.menu-icon .title,
+.top-bar .top-title h1 a {
+    color: #FFF;
+}
+.menu-icon span,
+.menu-icon span:after,
+.menu-icon span:before {
+    width: 100%;
+    height: .2em;
+    -webkit-transition: all .8s;
+    -moz-transition: all .8s;
+    -ms-transition: all .8s;
+    -o-transition: all .8s;
+    transition: all .8s;
+    background-color: #FFF
+}
+.menu {
+    background: rgba(60, 60, 60, .95);
+    margin-top: 0!important;
+    padding-top: 50px!important;
+    overflow: hidden;
+    text-transform: lowercase;
+}
+.menu-open .active .title {
+    color: #fff;
+}

@@ -3,27 +3,40 @@
 <head>
     <title>BibleShow - Online Bible Presenter</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
 </head>
 <body>
-    <div id="controls">
-        <form id="search_form">
-            <input type="text" id="search" />
-            <input type="submit" value="Search" />
-        </form>
-        <button id="fullButton">Toggle Fullscreen</button>
-        <button id="prevButton" onclick="prev()">Prev</button>
-        <button id="nextButton" onclick="next()">Next</button><br />
-        <button onclick="inc_fontsize()">A+</button>
-        <button onclick="dec_fontsize()">A-</button>
-        <button onclick="inc_margin()">M+</button>
-        <button onclick="dec_margin()">M-</button>
-        <button onclick="inc_lineheight()">L+</button>
-        <button onclick="dec_lineheight()">L-</button>
-        <button onclick="reset_settings()">Reset</button>
-    </div>
-    <h1 id="header"></h1>
-    <div id="content">
-        <div id="text_body"></div>
+    <div id="container">
+        <div class="top-bar">
+            <div id="trigger-menu" class="menu-icon">
+                <span></span>
+                <div class="title">menu</div>
+            </div>
+        </div>
+        <div class="pusher">
+            <nav class="menu">
+                <form id="search_form">
+                    <input type="text" id="search" />
+                    <input type="submit" value="Search" />
+                </form>
+                <button id="fullButton">Toggle Fullscreen</button>
+                <button id="prevButton" onclick="prev()">Prev</button>
+                <button id="nextButton" onclick="next()">Next</button><br />
+                <button onclick="inc_fontsize()">A+</button>
+                <button onclick="dec_fontsize()">A-</button>
+                <button onclick="inc_margin()">M+</button>
+                <button onclick="dec_margin()">M-</button>
+                <button onclick="inc_lineheight()">L+</button>
+                <button onclick="dec_lineheight()">L-</button>
+                <button onclick="reset_settings()">Reset</button>
+            </nav>
+        </div>
+        <div id="content-wrapper">
+            <h1 id="header"></h1>
+            <div id="content">
+                <div id="text_body"></div>
+            </div>
+        </div>
     </div>
     <script src="js/lib/SplitText.min.js"></script>
     <script src="js/lib/jquery-2.1.3.min.js"></script>

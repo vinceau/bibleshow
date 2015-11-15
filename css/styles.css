@@ -16,12 +16,6 @@ body {
     line-height: 60px;
 }
 
-#controls {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-}
-
 #header {
     text-align: center;
     font-size: 300%;

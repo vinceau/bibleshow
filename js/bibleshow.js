@@ -220,4 +220,22 @@ function reset_settings() {
 
 $(document).ready(function() {
     restore_settings();
+    var b = $("#container"),
+        c = $("#trigger-menu"),
+        d = $("#trigger-menu .title");
+    function a() {
+        b.hasClass("menu-open") ? d.text("menu") : d.text("close");
+    }
+    c.click(function() {
+        a();
+        b.toggleClass("menu-open");
+        $(this).toggleClass("active")
+    });
+    $("#content-wrapper").click(function() {
+        if (b.hasClass("menu-open")) {
+            a();
+            c.removeClass("active");
+            b.removeClass("menu-open");
+        }
+    })
 });
