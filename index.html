@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/menu.css">
 </head>
@@ -15,6 +16,11 @@
                 <span></span>
                 <div class="title">menu</div>
             </div>
+            <div class="controls">
+                <div id="prev" class="control-button" ><span class="glyphicon glyphicon-triangle-left"></span></div>
+                <div id="next" class="control-button" ><span class="glyphicon glyphicon-triangle-right"></span></div>
+                <div id="full" class="control-button" ><span class="glyphicon glyphicon-resize-full"></span></div>
+            </div>
         </div>
         <div class="pusher">
             <nav class="menu">
@@ -22,9 +28,6 @@
                     <input type="text" id="search" />
                     <input type="submit" value="Search" />
                 </form>
-                <button id="fullButton">Toggle Fullscreen</button>
-                <button id="prevButton" onclick="prev()">Prev</button>
-                <button id="nextButton" onclick="next()">Next</button><br />
                 <button onclick="inc_fontsize()">A+</button>
                 <button onclick="dec_fontsize()">A-</button>
                 <button onclick="inc_margin()">M+</button>

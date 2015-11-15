@@ -8,16 +8,30 @@ var curr_block; //index of current passage
 var last_start, last_end;
 
 function set_prev(enabled) {
-    $('#prevButton').prop('disabled', !enabled);
+    if (!enabled) {
+        $('#prev').addClass('inactive');
+    } else {
+        $('#prev').removeClass('inactive');
+    }
 }
 
 function set_next(enabled) {
-    $('#nextButton').prop('disabled', !enabled);
+    if (!enabled) {
+        $('#next').addClass('inactive');
+    } else {
+        $('#next').removeClass('inactive');
+    }
 }
 
 function check() {
     set_prev(start > 1 || curr_block > 0 );
     set_next(end < total_lines[curr_block] || curr_block < blocks.length - 1);
+    var f = $('#full .glyphicon');
+    if (currentlyFullscreen()) {
+        f.removeClass('glyphicon-resize-full').addClass('glyphicon-resize-small');
+    } else {
+        f.removeClass('glyphicon-resize-small').addClass('glyphicon-resize-full');
+    }
 }
 
 function next() {
@@ -176,7 +190,14 @@ $('#search_form').submit(function(e) {
     $('#search').blur();
 });
 
-$('#fullButton').click(function() {
+$("#next").click(function() {
+    next();
+})
+$("#prev").click(function() {
+    prev();
+})
+
+$('#full').click(function() {
     toggleFullscreen();
     reset();
 });
