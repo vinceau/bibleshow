@@ -190,8 +190,10 @@ function restore_settings() {
     $('#search').val(passage);
     var margin = parseFloat(Cookies.get('margin'));
     if (margin) {
-        $('#content').css('margin-left', margin);
-        $('#content').css('margin-right', margin);
+        $('#content').css({
+            'margin-left': margin,
+            'margin-right': margin,
+        });
     }
     var fontsize = parseFloat(Cookies.get('fontsize'));
     if (fontsize) {
@@ -204,10 +206,12 @@ function restore_settings() {
 }
 
 function reset_settings() {
-    $('#content').css('margin-left', '');
-    $('#content').css('margin-right', '');
-    $('#content').css('font-size', '');
-    $('#content').css('line-height', '');
+    $('#content').css({
+        'margin-left': '',
+        'margin-right': '',
+        'font-size': '',
+        'line-height': '',
+    });
     reset();
     Cookies.remove('margin');
     Cookies.remove('fontsize');
