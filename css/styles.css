@@ -29,6 +29,18 @@ body {
     height: 100%;
 }
 
+.control-button::selection {
+    background-color: transparent;
+}
+
+.control-button::moz-selection{
+    background-color: transparent;
+}
+
+.control-button::webkit-selection{
+    background-color: transparent;
+}
+
 .controls .control-button {
     float: left;
     width: 2em;
