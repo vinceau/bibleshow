@@ -160,9 +160,10 @@
 .menu-open .active .title {
     color: #fff;
 }
-.menu .nav-search {
+.menu .menu-section {
     padding: 0 20px;
-    margin: 20px 0
+    margin: 20px 0;
+    text-align: center;
 }
 .menu .nav-search form {
     background: 0 0;
@@ -235,6 +236,13 @@
     margin-right: 5px
 }
 
+.form-title {
+    text-transform: uppercase;
+    font-size: 12px;
+    text-align: center;
+    padding-bottom: 3px;
+    font-weight: bold;
+}
 .controls {
     z-index: 599;
     position: relative;
