@@ -102,7 +102,7 @@ function reset(hard) {
         //create a new SplitText object with current text
         st = new SplitText("#text_body div.passage", {
             type: "lines",
-            linesClass: "line++",
+            linesClass: "line line++",
         });
     } else {
         console.log('soft reset');
@@ -115,6 +115,7 @@ function reset(hard) {
     set_block(curr_block);
     go_to_start();
     check();
+    fix_align();
 }
 
 function set_block(index) {
@@ -202,6 +203,12 @@ $('#full').click(function() {
     reset();
 });
 
+$('.align-btn').click(function() {
+    var align = $(this).data('keyword');
+    $('.line').css('text-align', align);
+    Cookies.set('align', align);
+});
+
 function restore_settings() {
     var passage = Cookies.get('passage');
     if (!passage) {
@@ -226,7 +233,18 @@ function restore_settings() {
     }
 }
 
+function fix_align() {
+    var align = Cookies.get('align');
+    if (align) {
+        $('.line').css('text-align', align);
+    }
+}
+
 function reset_settings() {
+    Cookies.remove('margin');
+    Cookies.remove('fontsize');
+    Cookies.remove('lineheight');
+    Cookies.remove('align');
     $('#content').css({
         'margin-left': '',
         'margin-right': '',
@@ -234,9 +252,6 @@ function reset_settings() {
         'line-height': '',
     });
     reset();
-    Cookies.remove('margin');
-    Cookies.remove('fontsize');
-    Cookies.remove('lineheight');
 }
 
 $(document).ready(function() {
