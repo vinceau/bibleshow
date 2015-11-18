@@ -101,11 +101,6 @@
     position: relative;
     display: block;
 }
-.menu-icon:hover span,
-.menu-icon:hover span:after,
-.menu-icon:hover span:before {
-    opacity: .7;
-}
 .menu-icon span:after,
 .menu-icon span:before {
     position: absolute;
@@ -264,6 +259,7 @@
     height: 100%;
 }
 
+.menu-icon:hover,
 .control-button:hover,
 .control-button:hover:after,
 .control-button:hover:before {
