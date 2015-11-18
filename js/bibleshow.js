@@ -209,6 +209,17 @@ $('.align-btn').click(function() {
     Cookies.set('align', align);
 });
 
+function invert_colours() {
+    $('body').toggleClass('black-on-white');
+    $('#invert span').toggleClass('white-on-black');
+    var colour = $('body').hasClass('black-on-white') ? 'black-on-white' : 'white-on-black';
+    Cookies.set('colour', colour);
+}
+
+$('#invert').click(function() {
+    invert_colours();
+});
+
 function restore_settings() {
     var passage = Cookies.get('passage');
     if (!passage) {
@@ -230,6 +241,11 @@ function restore_settings() {
     var lineheight = parseFloat(Cookies.get('lineheight'));
     if (lineheight) {
         $('#content').css('line-height', lineheight + 'px');
+    }
+    var colour = Cookies.get('colour');
+    if (colour == 'black-on-white') {
+        $('body').removeClass('white-on-black').addClass(colour);
+        $('#invert span').removeClass('white-on-black');
     }
 }
 

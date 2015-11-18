@@ -10,6 +10,16 @@ body {
     margin: 0;
 }
 
+.black-on-white {
+    background-color: white;
+    color: black;
+}
+
+.white-on-black {
+    background-color: black;
+    color: white;
+}
+
 #content {
     font-size: 250%;
     margin: 0 5%;
