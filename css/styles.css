@@ -32,9 +32,15 @@ body {
     font-size: 250%;
     margin: 0 5%;
     line-height: 60px;
+    text-align: justify;
 }
 
 #header {
     text-align: center;
     font-size: 300%;
+}
+
+.justify-fix {
+    display: inline-block;
+    width: 100%;
 }

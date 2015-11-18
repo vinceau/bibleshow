@@ -109,6 +109,12 @@ function reset(hard) {
         //resplit the current text without creating new SplitText object
         st.split();
     }
+    var lines = st.lines;
+    for (var i = 0; i < lines.length - 1; i++) {
+        var span = document.createElement('span');
+        span.className = 'justify-fix';
+        lines[i].appendChild(span);
+    }
     for (var i = 0; i < blocks.length; i++) {
         total_lines[i] = $('#block' + i + ' div').length;
     }
