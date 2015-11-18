@@ -152,7 +152,6 @@
     margin-top: 0!important;
     padding-top: 50px!important;
     overflow: hidden;
-    text-transform: lowercase;
 }
 .menu-open .active .title {
     color: #fff;
