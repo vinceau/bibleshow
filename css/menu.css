@@ -309,3 +309,8 @@
         margin-left: 5em;
     }
 }
+
+.menu .btn {
+    font-size: 20px;
+    padding: 2px 7px;
+}
