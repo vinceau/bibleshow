@@ -152,6 +152,7 @@
     margin-top: 0!important;
     padding-top: 50px!important;
     overflow: hidden;
+    color: #fff;
 }
 .menu-open .active .title {
     color: #fff;
@@ -164,7 +165,7 @@
 .menu .nav-search form {
     background: 0 0;
     font-weight: 300;
-    border-bottom: 1px solid #444
+    border-bottom: 1px solid #fff;
 }
 .menu .nav-search form input {
     width: 170px;
