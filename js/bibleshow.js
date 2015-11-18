@@ -227,21 +227,21 @@ function restore_settings() {
     }
     load_passage(passage);
     $('#search').val(passage);
+    var css = {}
     var margin = parseFloat(Cookies.get('margin'));
     if (margin) {
-        $('#content').css({
-            'margin-left': margin,
-            'margin-right': margin,
-        });
+        css['margin-left'] = margin;
+        css['margin-right'] = margin;
     }
     var fontsize = parseFloat(Cookies.get('fontsize'));
     if (fontsize) {
-        $('#content').css('font-size', fontsize);
+        css['font-size'] = fontsize;
     }
     var lineheight = parseFloat(Cookies.get('lineheight'));
     if (lineheight) {
-        $('#content').css('line-height', lineheight + 'px');
+        css['line-height'] = lineheight + 'px';
     }
+    $('#content').css(css);
     var colour = Cookies.get('colour');
     if (colour == 'black-on-white') {
         $('body').removeClass('white-on-black').addClass(colour);
