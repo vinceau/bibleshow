@@ -151,7 +151,7 @@
     background: rgba(189, 189, 189, .95);
     margin-top: 0!important;
     padding-top: 50px!important;
-    overflow: hidden;
+    overflow: scroll;
     color: #fff;
 }
 .menu-open .active .title {
