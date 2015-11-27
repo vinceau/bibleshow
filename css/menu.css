@@ -322,3 +322,7 @@
 .menu button .glyphicon {
     top: 0;
 }
+
+.menu hr {
+    width: 210px;
+}
