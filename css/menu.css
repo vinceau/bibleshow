@@ -331,3 +331,10 @@
 .menu hr {
     width: 210px;
 }
+
+/* this makes up for the extra 50px at the top of the menu */
+.menu .menu-fix {
+    display: block;
+    height: 50px;
+    width: 100%;
+}
