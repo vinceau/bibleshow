@@ -233,7 +233,7 @@ function restore_settings() {
     }
     load_passage(passage);
     $('#search').val(passage);
-    var css = {}
+    var css = {};
     var margin = parseFloat(Cookies.get('margin'));
     if (margin) {
         css['margin-left'] = margin;
