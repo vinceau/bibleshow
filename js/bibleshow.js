@@ -217,13 +217,13 @@ $('.align-btn').click(function() {
 
 function invert_colours() {
     $('body').toggleClass('black-on-white');
-    $('#invert span').toggleClass('white-on-black');
     var colour = $('body').hasClass('black-on-white') ? 'black-on-white' : 'white-on-black';
     Cookies.set('colour', colour);
 }
 
 $('#invert').click(function() {
     invert_colours();
+    $(this).find('span').toggleClass('white-on-black');
 });
 
 function restore_settings() {
