@@ -52,16 +52,52 @@
                     </div>
                 </div>
                 <hr />
-                <button onclick="inc_fontsize()">A+</button>
-                <button onclick="dec_fontsize()">A-</button>
-                <button onclick="inc_margin()">M+</button>
-                <button onclick="dec_margin()">M-</button>
-                <button onclick="inc_lineheight()">L+</button>
-                <button onclick="dec_lineheight()">L-</button>
-                <button onclick="reset_settings()">Reset</button>
-                <button id="invert" title="Invert Colours" type="button" class="btn btn-default">
-                    <span class="white-on-black glyphicon glyphicon-text-background" aria-hidden="true"></span>
-                </button>
+                <div class="menu-section">
+                    <div class="form-label"><span class="mini-icon glyphicon glyphicon-text-size"></span>Font Size</div>
+                    <div class="btn-group">
+                        <button id="ft-dec-btn" type="button" title="Decrease Font Size" class="btn btn-default">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                        <button id="ft-inc-btn" type="button" title="Increase Font Size" class="btn btn-default" aria-label="Center Align">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="menu-section">
+                    <div class="form-label"><span class="mini-icon glyphicon glyphicon-text-width"></span>Margin</div>
+                    <div class="btn-group">
+                        <button id="mg-dec-btn" type="button" title="Decrease Margins" class="btn btn-default">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                        <button id="mg-inc-btn" type="button" title="Increase Margins" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="menu-section">
+                    <div class="form-label"><span class="mini-icon glyphicon glyphicon-text-height"></span>Line Height</div>
+                    <div class="btn-group">
+                        <button id="lh-dec-btn" type="button" title="Decrease Line Height" class="btn btn-default">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                        <button id="lh-inc-btn" type="button" title="Increase Line Height" class="btn btn-default">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <hr />
+                <div class="menu-section">
+                    <div class="form-label"><span class="mini-icon glyphicon glyphicon-adjust"></span>Invert</div>
+                    <button id="invert-btn" title="Invert Colours" type="button" class="btn btn-default">
+                        <span class="white-on-black glyphicon glyphicon-text-background" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="menu-section">
+                    <div class="form-label"><span class="mini-icon glyphicon glyphicon-flash"></span>Reset</div>
+                    <button id="reset-btn" title="Reset Settings" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    </button>
+                </div>
             </div>
         </div>
         <div id="content-wrapper">

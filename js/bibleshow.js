@@ -209,6 +209,30 @@ $('#full').click(function() {
     reset();
 });
 
+$('#lh-dec-btn').click(function() {
+    dec_lineheight();
+});
+
+$('#lh-inc-btn').click(function() {
+    inc_lineheight();
+});
+
+$('#mg-dec-btn').click(function() {
+    dec_margin();
+});
+
+$('#mg-inc-btn').click(function() {
+    inc_margin();
+});
+
+$('#ft-dec-btn').click(function() {
+    dec_fontsize();
+});
+
+$('#ft-inc-btn').click(function() {
+    inc_fontsize();
+});
+
 $('.align-btn').click(function() {
     var align = $(this).data('keyword');
     $('.line').css('text-align', align);
@@ -221,9 +245,13 @@ function invert_colours() {
     Cookies.set('colour', colour);
 }
 
-$('#invert').click(function() {
+$('#invert-btn').click(function() {
     invert_colours();
     $(this).find('span').toggleClass('white-on-black');
+});
+
+$('#reset-btn').click(function() {
+    reset_settings();
 });
 
 function restore_settings() {
