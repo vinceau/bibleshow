@@ -279,7 +279,7 @@ function restore_settings() {
     var colour = Cookies.get('colour');
     if (colour == 'black-on-white') {
         $('body').removeClass('white-on-black').addClass(colour);
-        $('#invert span').removeClass('white-on-black');
+        $('#invert-btn span').removeClass('white-on-black');
     }
 }
 
