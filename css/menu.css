@@ -338,3 +338,11 @@
     height: 50px;
     width: 100%;
 }
+
+.menu .menu-footer {
+    font-size: 14px;
+}
+
+.menu a {
+    color: #fff;
+}
