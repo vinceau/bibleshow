@@ -318,3 +318,7 @@
 .menu .mini-icon {
     padding-right: 5px;
 }
+
+.menu button .glyphicon {
+    top: 0;
+}
