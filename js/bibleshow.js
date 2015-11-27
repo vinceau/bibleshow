@@ -199,10 +199,10 @@ $('#search_form').submit(function(e) {
 
 $("#next").click(function() {
     next();
-})
+});
 $("#prev").click(function() {
     prev();
-})
+});
 
 $('#full').click(function() {
     toggleFullscreen();
@@ -315,7 +315,7 @@ $(document).ready(function() {
     c.click(function() {
         a();
         b.toggleClass("menu-open");
-        $(this).toggleClass("active")
+        $(this).toggleClass("active");
     });
     $("#content-wrapper").click(function() {
         if (b.hasClass("menu-open")) {
