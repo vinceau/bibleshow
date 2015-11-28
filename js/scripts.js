@@ -80,6 +80,14 @@ function dec_lineheight() {
     Cookies.set('lineheight', l);
 }
 
+function set_font(font) {
+    if (!$('#content-wrapper').hasClass(font)) {
+        $('#content-wrapper').removeClass('serif sans-serif').addClass(font);
+        reset();
+    }
+    Cookies.set('font', font);
+}
+
 jQuery.fn.fits = function(){
     var bounds = this.offset(); //Coordinates of current element
     bounds.right = bounds.left + this.outerWidth();

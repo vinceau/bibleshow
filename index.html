@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylehsheet" href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans" type="text/css">
 </head>
 <body>
     <div id="container">
@@ -33,6 +34,13 @@
                             <i class="icon-search" aria-hidden="true" data-icon="⚲"></i>
                         </button>
                     </form>
+                </div>
+                <div class="menu-section">
+                    <div class="form-title"><span class="mini-icon glyphicon glyphicon-font"></span>Font</div>
+                    <select id="font-select" class="form-control">
+                        <option class="serif" value="serif">Times</option>
+                        <option class="sans-serif" value="sans-serif">Arial</option>
+                    </select> 
                 </div>
                 <div class="menu-section">
                     <div class="form-title"><span class="mini-icon glyphicon glyphicon-align-left"></span>Align</div>
@@ -106,7 +114,7 @@
                 <div class="menu-fix"></div>
             </div>
         </div>
-        <div id="content-wrapper">
+        <div id="content-wrapper" class="serif">
             <h1 id="header">Loading...</h1>
             <div id="content">
                 <div id="text_body"></div>

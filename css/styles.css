@@ -28,6 +28,14 @@ body {
     transition: all .5s;
 }
 
+.serif {
+    font-family: serif, 'Crimson Text';
+}
+
+.sans-serif {
+    font-family: sans-serif, 'Open Sans';
+}
+
 #content {
     font-size: 250%;
     margin: 0 5%;

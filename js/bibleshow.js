@@ -239,6 +239,10 @@ $('.align-btn').click(function() {
     Cookies.set('align', align);
 });
 
+$('#font-select').change(function() {
+    set_font($(this).val());
+});
+
 function invert_colours() {
     $('body').toggleClass('black-on-white');
     var colour = $('body').hasClass('black-on-white') ? 'black-on-white' : 'white-on-black';
@@ -255,6 +259,11 @@ $('#reset-btn').click(function() {
 });
 
 function restore_settings() {
+    var font = Cookies.get('font');
+    if (font) {
+        $('#content-wrapper').removeClass('serif sans-serif').addClass(font);
+        $('#font-select').val(font);
+    }
     var passage = Cookies.get('passage');
     if (!passage) {
         passage = 'Gen 1';
@@ -281,6 +290,7 @@ function restore_settings() {
         $('body').removeClass('white-on-black').addClass(colour);
         $('#invert-btn span').removeClass('white-on-black');
     }
+    console.log('finished restoring settings!');
 }
 
 function fix_align() {
