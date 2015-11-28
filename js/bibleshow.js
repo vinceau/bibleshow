@@ -324,4 +324,5 @@ $(document).ready(function() {
             b.removeClass("menu-open");
         }
     })
+    $('.menu').show();
 });
