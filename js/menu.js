@@ -204,6 +204,7 @@ const MainContent = React.createClass({
             this.setState({
                 passages: d.passages
             });
+            Cookies.set('passage', query);
         }.bind(this);
         var fail = function() {
             console.log('Failed to load passage(s).');
