@@ -88,6 +88,17 @@ function set_font(font) {
     Cookies.set('font', font);
 }
 
+function get_passage(passage, scb, fcb) {
+    //var bible_url = 'https://labs.bible.org/api/?callback=?&type=json&passage=';
+    //var bible_url = 'https://api.biblia.com/v1/bible/content/LEB.json?key=fd37d8f28e95d3be8cb4fbc37e15e18e&style=simpleParagraphs&passage=';
+    var bible_url = 'https://niv84api.appspot.com/api/?passage=';
+    $.getJSON(bible_url + encodeURIComponent(passage), function(d) {
+        scb(d);
+    }).fail(function() {
+        fcb();
+    });
+}
+
 jQuery.fn.fits = function(){
     var bounds = this.offset(); //Coordinates of current element
     bounds.right = bounds.left + this.outerWidth();

@@ -132,11 +132,8 @@ function set_block(index) {
 }
 
 function load_passage(passage) {
-    //var bible_url = 'https://labs.bible.org/api/?callback=?&type=json&passage=';
-    //var bible_url = 'https://api.biblia.com/v1/bible/content/LEB.json?key=fd37d8f28e95d3be8cb4fbc37e15e18e&style=simpleParagraphs&passage=';
-    var bible_url = 'https://niv84api.appspot.com/api/?passage=';
     blocks = [];
-    $.getJSON(bible_url + encodeURIComponent(passage), function(d) {
+    var success = function(d) {
         console.log("data: ", d);
         console.log("Successfully data recived");
         var text = '';
@@ -155,10 +152,12 @@ function load_passage(passage) {
         reset(true);
         set_block(0);
         Cookies.set('passage', passage);
-    }).fail(function() {
+    };
+    var fail = function() {
         $('#header').html('Error');
         $('#text_body').html('Couldn\'t find passage: ' + passage);
-    });
+    };
+    get_passage(passage, success, fail);
 }
 
 window.Bindings = Keys.Bindings;
