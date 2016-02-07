@@ -1,4 +1,8 @@
 const BlockComponent = React.createClass({
+    componentDidMount: function() {
+        console.log('block ' + this.props.bid + 'is mounted');
+//this.props.reset();
+    },
     render: function() {
         var id = 'block' + this.props.bid;
         var text = '';
@@ -15,39 +19,36 @@ const BlockComponent = React.createClass({
 const PassageContent = React.createClass({
     getInitialState: function() {
         return {
-            currentBlock: 0,
-            headers: ['Loading...'],
-            blocks: ['']
+            currentBlock: 0
         };
     },
-    componentWillMount: function() {
-        var success = (d) => {
-            var headers = [];
-            var blocks = [];
-            console.log('yay');
-            console.log(d);
-            for (var i = 0; i < d.passages.length; i++ ) {
-                var data = d.passages[i];
-                headers.push(data.title);
-                blocks.push(<BlockComponent bid={i} verses={data.verses}/>);
-            }
-            this.setState({
-                headers: headers,
-                blocks: blocks
-            });
-        };
-        var fail = () => {
-            console.log('nope');
-        };
-        get_passage(this.props.passage, success, fail);
+    nextPassage: function() {
+        this.setState({
+            currentBlock: this.state.currentBlock + 1
+        });
+        this.reset();
+    },
+    reset: function() {
+        var st = new SplitText('#block' + this.state.currentBlock, {
+            type: 'lines',
+            linesClass: 'line line++',
+        });
     },
     render: function() {
+        var headers = [];
+        var blocks = [];
+        for (var i = 0; i < this.props.passages.length; i++ ) {
+            var data = this.props.passages[i];
+            headers.push(data.title);
+            blocks.push(<BlockComponent bid={i} verses={data.verses} reset={this.reset}/>);
+        }
         return (
         <div>
-            <h1 id="header">{this.state.headers[this.state.currentBlock]}</h1>
+            <button id="poop" onClick={this.nextPassage}>Poop</button>
+            <h1 id="header">{headers[this.state.currentBlock]}</h1>
             <div id="content">
                 <div id="text_body">
-                    {this.state.blocks[this.state.currentBlock]}
+                    {blocks[this.state.currentBlock]}
                 </div>
             </div>
         </div>
@@ -55,23 +56,161 @@ const PassageContent = React.createClass({
     }
 });
 
-const MainContent = React.createClass({
+const PassageScreen = React.createClass({
     getInitialState: function() {
-        var passage = Cookies.get('passage');
-        if (!passage) {
-            passage = 'Gen 1';
-        }
         return {
-            passage: passage
+            passages: {}
         };
+    },
+    componentWillMount: function() {
+        var success = (d) => {
+            console.log('yay');
+            console.log(d);
+            this.setState({
+                passages: d.passages
+            });
+        };
+        var fail = () => {
+            console.log('Failed to load passage(s).');
+        };
+        get_passage(this.props.search, success, fail);
     },
     render: function() {
         return (
         <div id="content-wrapper" className="serif">
-            <PassageContent passage={this.state.passage} />
+            <PassageContent passages={this.state.passages} />
         </div>
         );
     }
 });
 
-ReactDOM.render(<MainContent />, document.getElementById('main-hook'));
+const TopBar = React.createClass({
+    render: () => {
+        return (
+            <div className="top-bar">
+                <div id="trigger-menu" className="menu-icon">
+                    <span></span>
+                    <div className="title">menu</div>
+                </div>
+                <div className="controls">
+                    <div id="prev" title="Previous" className="control-button" ><span className="glyphicon glyphicon-triangle-left"></span></div>
+                    <div id="next" title="Next" className="control-button" ><span className="glyphicon glyphicon-triangle-right"></span></div>
+                    <div id="full" title="Toggle Fullscreen" className="control-button" ><span className="glyphicon glyphicon-resize-full"></span></div>
+                </div>
+            </div>
+        );
+    }
+});
+
+
+const Pusher = React.createClass({
+    render: () => {
+        return (
+        <div className="pusher">
+            <div className="menu" style={{display: 'none'}}>
+                <div className="menu-section nav-search">
+                    <div className="form-title"><span className="mini-icon glyphicon glyphicon-search"></span>Search</div>
+                    <form id="search_form">
+                        <input id="search" placeholder="Gen 1-2" type="text" />
+                        <button type="submit">
+                            <i className="icon-search" aria-hidden="true" data-icon="⚲"></i>
+                        </button>
+                    </form>
+                </div>
+                <div className="menu-section">
+                    <div className="form-title"><span className="mini-icon glyphicon glyphicon-font"></span>Font</div>
+                    <select id="font-select" className="form-control">
+                        <option className="serif" value="serif">Times</option>
+                        <option className="sans-serif" value="sans-serif">Arial</option>
+                    </select> 
+                </div>
+                <div className="menu-section">
+                    <div className="form-title"><span className="mini-icon glyphicon glyphicon-align-left"></span>Align</div>
+                    <div className="btn-group">
+                        <button type="button" title="Left Align" data-keyword="left" className="align-btn btn btn-default" aria-label="Left Align">
+                            <span className="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" title="Center Align" data-keyword="center" className="align-btn btn btn-default" aria-label="Center Align">
+                            <span className="glyphicon glyphicon-align-center" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" title="Right Align" data-keyword="right" className="align-btn btn btn-default" aria-label="Right Align">
+                            <span className="glyphicon glyphicon-align-right" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" title="Justify" data-keyword="justify" className="align-btn btn btn-default" aria-label="Justify">
+                            <span className="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <hr />
+                <div className="menu-section">
+                    <div className="form-title form-label"><span className="mini-icon glyphicon glyphicon-text-size"></span>Font Size</div>
+                    <div className="btn-group">
+                        <button id="ft-dec-btn" type="button" title="Decrease Font Size" className="btn btn-default">
+                            <span className="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                        <button id="ft-inc-btn" type="button" title="Increase Font Size" className="btn btn-default" aria-label="Center Align">
+                            <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div className="menu-section">
+                    <div className="form-title form-label"><span className="mini-icon glyphicon glyphicon-text-width"></span>Margin</div>
+                    <div className="btn-group">
+                        <button id="mg-dec-btn" type="button" title="Decrease Margins" className="btn btn-default">
+                            <span className="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                        <button id="mg-inc-btn" type="button" title="Increase Margins" className="btn btn-default">
+                            <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <div className="menu-section">
+                    <div className="form-title form-label"><span className="mini-icon glyphicon glyphicon-text-height"></span>Line Height</div>
+                    <div className="btn-group">
+                        <button id="lh-dec-btn" type="button" title="Decrease Line Height" className="btn btn-default">
+                            <span className="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                        <button id="lh-inc-btn" type="button" title="Increase Line Height" className="btn btn-default">
+                            <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+                <hr />
+                <div className="menu-section">
+                    <div className="form-title form-label"><span className="mini-icon glyphicon glyphicon-adjust"></span>Invert</div>
+                    <button id="invert-btn" title="Invert Colours" type="button" className="btn btn-default">
+                        <span className="white-on-black glyphicon glyphicon-text-background" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div className="menu-section">
+                    <div className="form-title form-label"><span className="mini-icon glyphicon glyphicon-flash"></span>Reset</div>
+                    <button id="reset-btn" title="Reset Settings" type="button" className="btn btn-default">
+                        <span className="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <hr />
+                <div className="menu-section menu-footer">
+                    <p><b><a target="_blank" href="http://github.com/vinceau/bibleshow">BibleShow</a> &copy; 2015</b></p>
+                    <p>Made with love<br />by <a target="_blank" href="http://vinceau.github.io/">Vincent Au</a></p>
+                </div>
+                <div className="menu-fix"></div>
+            </div>
+        </div>
+        );
+    }
+});
+
+const MainContent = React.createClass({
+    render: () => {
+        return (
+        <div>
+            <TopBar />
+            <Pusher />
+            <PassageScreen search={'Gen 1; Gen 3'} />
+        </div>
+        );
+    }
+});
+
+
+ReactDOM.render(<MainContent />, document.getElementById('container'));

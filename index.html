@@ -12,110 +12,7 @@
     <link rel="stylehsheet" href="https://fonts.googleapis.com/css?family=Crimson+Text|Open+Sans" type="text/css">
 </head>
 <body>
-    <div id="container">
-        <div class="top-bar">
-            <div id="trigger-menu" class="menu-icon">
-                <span></span>
-                <div class="title">menu</div>
-            </div>
-            <div class="controls">
-                <div id="prev" title="Previous" class="control-button" ><span class="glyphicon glyphicon-triangle-left"></span></div>
-                <div id="next" title="Next" class="control-button" ><span class="glyphicon glyphicon-triangle-right"></span></div>
-                <div id="full" title="Toggle Fullscreen" class="control-button" ><span class="glyphicon glyphicon-resize-full"></span></div>
-            </div>
-        </div>
-        <div class="pusher">
-            <div class="menu" style="display: none;">
-                <div class="menu-section nav-search">
-                    <div class="form-title"><span class="mini-icon glyphicon glyphicon-search"></span>Search</div>
-                    <form id="search_form">
-                        <input id="search" placeholder="Gen 1-2" type="text">
-                        <button type="submit">
-                            <i class="icon-search" aria-hidden="true" data-icon="⚲"></i>
-                        </button>
-                    </form>
-                </div>
-                <div class="menu-section">
-                    <div class="form-title"><span class="mini-icon glyphicon glyphicon-font"></span>Font</div>
-                    <select id="font-select" class="form-control">
-                        <option class="serif" value="serif">Times</option>
-                        <option class="sans-serif" value="sans-serif">Arial</option>
-                    </select> 
-                </div>
-                <div class="menu-section">
-                    <div class="form-title"><span class="mini-icon glyphicon glyphicon-align-left"></span>Align</div>
-                    <div class="btn-group">
-                        <button type="button" title="Left Align" data-keyword="left" class="align-btn btn btn-default" aria-label="Left Align">
-                            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" title="Center Align" data-keyword="center" class="align-btn btn btn-default" aria-label="Center Align">
-                            <span class="glyphicon glyphicon-align-center" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" title="Right Align" data-keyword="right" class="align-btn btn btn-default" aria-label="Right Align">
-                            <span class="glyphicon glyphicon-align-right" aria-hidden="true"></span>
-                        </button>
-                        <button type="button" title="Justify" data-keyword="justify" class="align-btn btn btn-default" aria-label="Justify">
-                            <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                </div>
-                <hr />
-                <div class="menu-section">
-                    <div class="form-title form-label"><span class="mini-icon glyphicon glyphicon-text-size"></span>Font Size</div>
-                    <div class="btn-group">
-                        <button id="ft-dec-btn" type="button" title="Decrease Font Size" class="btn btn-default">
-                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                        </button>
-                        <button id="ft-inc-btn" type="button" title="Increase Font Size" class="btn btn-default" aria-label="Center Align">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="menu-section">
-                    <div class="form-title form-label"><span class="mini-icon glyphicon glyphicon-text-width"></span>Margin</div>
-                    <div class="btn-group">
-                        <button id="mg-dec-btn" type="button" title="Decrease Margins" class="btn btn-default">
-                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                        </button>
-                        <button id="mg-inc-btn" type="button" title="Increase Margins" class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="menu-section">
-                    <div class="form-title form-label"><span class="mini-icon glyphicon glyphicon-text-height"></span>Line Height</div>
-                    <div class="btn-group">
-                        <button id="lh-dec-btn" type="button" title="Decrease Line Height" class="btn btn-default">
-                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                        </button>
-                        <button id="lh-inc-btn" type="button" title="Increase Line Height" class="btn btn-default">
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        </button>
-                    </div>
-                </div>
-                <hr />
-                <div class="menu-section">
-                    <div class="form-title form-label"><span class="mini-icon glyphicon glyphicon-adjust"></span>Invert</div>
-                    <button id="invert-btn" title="Invert Colours" type="button" class="btn btn-default">
-                        <span class="white-on-black glyphicon glyphicon-text-background" aria-hidden="true"></span>
-                    </button>
-                </div>
-                <div class="menu-section">
-                    <div class="form-title form-label"><span class="mini-icon glyphicon glyphicon-flash"></span>Reset</div>
-                    <button id="reset-btn" title="Reset Settings" type="button" class="btn btn-default">
-                        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-                    </button>
-                </div>
-                <hr />
-                <div class="menu-section menu-footer">
-                    <p><b><a target="_blank" href="http://github.com/vinceau/bibleshow">BibleShow</a> &copy; 2015</b></p>
-                    <p>Made with love<br />by <a target="_blank" href="http://vinceau.github.io/">Vincent Au</a></p>
-                </div>
-                <div class="menu-fix"></div>
-            </div>
-        </div>
-        <div id="main-hook"></div>
-    </div>
+    <div id="container"></div>
     <script src="js/lib/SplitText.min.js"></script>
     <script src="js/lib/jquery-2.1.3.min.js"></script>
     <script src="js/lib/js.cookie.js"></script>
@@ -127,7 +24,6 @@
     <script src="js/lib/react-dom.min.js"></script>
     <script src="js/lib/browser-5.8.23.min.js"></script>
     <script type="text/babel" src="js/menu.js"></script>
-
 </body>
 </html>
 
