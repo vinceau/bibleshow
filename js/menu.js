@@ -63,14 +63,14 @@ const PassageScreen = React.createClass({
         };
     },
     componentWillMount: function() {
-        var success = (d) => {
+        var success = function(d) {
             console.log('yay');
             console.log(d);
             this.setState({
                 passages: d.passages
             });
         };
-        var fail = () => {
+        var fail = function() {
             console.log('Failed to load passage(s).');
         };
         get_passage(this.props.search, success, fail);
@@ -85,7 +85,7 @@ const PassageScreen = React.createClass({
 });
 
 const TopBar = React.createClass({
-    render: () => {
+    render: function() {
         return (
             <div className="top-bar">
                 <div id="trigger-menu" className="menu-icon">
@@ -104,7 +104,7 @@ const TopBar = React.createClass({
 
 
 const Pusher = React.createClass({
-    render: () => {
+    render: function() {
         return (
         <div className="pusher">
             <div className="menu" style={{display: 'none'}}>
@@ -201,7 +201,7 @@ const Pusher = React.createClass({
 });
 
 const MainContent = React.createClass({
-    render: () => {
+    render: function() {
         return (
         <div>
             <TopBar />
