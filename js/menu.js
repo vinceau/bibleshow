@@ -55,34 +55,6 @@ const PassageContent = React.createClass({
     }
 });
 
-const PassageScreen = React.createClass({
-    getInitialState: function() {
-        return {
-            passages: {}
-        };
-    },
-    componentWillMount: function() {
-        var success = function(d) {
-            console.log('yay');
-            console.log(d);
-            this.setState({
-                passages: d.passages
-            });
-        }.bind(this);
-        var fail = function() {
-            console.log('Failed to load passage(s).');
-        };
-        get_passage(this.props.search, success, fail);
-    },
-    render: function() {
-        return (
-        <div id="content-wrapper" className="serif">
-            <PassageContent passages={this.state.passages} />
-        </div>
-        );
-    }
-});
-
 const TopBar = React.createClass({
     render: function() {
         var menuText = this.props.menuOpened ? 'close' : 'menu';
@@ -105,15 +77,20 @@ const TopBar = React.createClass({
     }
 });
 
-
 const Pusher = React.createClass({
+    handleSubmit: function(e) {
+        e.preventDefault();
+        var query = $('#search').val();
+        this.props.onSearchSubmit(query);
+        $('#search').blur();
+    },
     render: function() {
         return (
         <div className="pusher">
             <div className="menu">
                 <div className="menu-section nav-search">
                     <div className="form-title"><span className="mini-icon glyphicon glyphicon-search"></span>Search</div>
-                    <form id="search_form">
+                    <form id="search_form" onSubmit={this.handleSubmit}>
                         <input id="search" placeholder="Gen 1-2" type="text" />
                         <button type="submit">
                             <i className="icon-search" aria-hidden="true" data-icon="⚲"></i>
@@ -207,13 +184,36 @@ const MainContent = React.createClass({
     getInitialState: function() {
         return {
             menuOpened: false,
-            search: 'Gen 1; Gen 3'
+            passages: {}
         };
     },
     onMenuClick: function() {
         this.setState({
             menuOpened: !this.state.menuOpened
         });
+    },
+    onSearchSubmit: function(query) {
+        this.loadQuery(query);
+    },
+    loadQuery: function(query) {
+        var success = function(d) {
+            console.log('yay');
+            console.log(d);
+            this.setState({
+                passages: d.passages
+            });
+        }.bind(this);
+        var fail = function() {
+            console.log('Failed to load passage(s).');
+        };
+        get_passage(query, success, fail);
+    },
+    componentWillMount: function() {
+        var passage = Cookies.get('passage');
+        if (!passage) {
+            passage = 'Gen 1';
+        }
+        this.loadQuery(passage);
     },
     render: function() {
         var contClass = classNames({
@@ -223,8 +223,10 @@ const MainContent = React.createClass({
         <div id="container" className={contClass}>
             <TopBar onMenuClick={this.onMenuClick}
                     menuOpened={this.state.menuOpened} />
-            <Pusher />
-            <PassageScreen search={this.state.search} />
+            <Pusher onSearchSubmit={this.onSearchSubmit} />
+            <div id="content-wrapper" className="serif">
+                <PassageContent passages={this.state.passages} />
+            </div>
         </div>
         );
     }
