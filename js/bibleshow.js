@@ -1,3 +1,74 @@
+function getlines(first, last) {
+    var sel = '';
+    for (var i = first; i < last; i++) {
+        sel += '.line' + i + ', ';
+    }
+    if (first <= last) {
+        sel += '.line' + last;
+    }
+    return sel;
+}
+
+function hidelines(sel, first, last) {
+    $(sel).find(getlines(first, last)).hide();
+}
+
+function showlines(sel, first, last) {
+    $(sel).find(getlines(first, last)).show();
+}
+
+function inc_fontsize() {
+    var s = parseFloat($('#content').css('font-size')) * 1.1;
+    $('#content').css('font-size', s);
+    reset();
+    Cookies.set('fontsize', s);
+}
+
+function dec_fontsize() {
+    var s = parseFloat($('#content').css('font-size')) * 0.9;
+    $('#content').css('font-size', s);
+    reset();
+    Cookies.set('fontsize', s);
+}
+
+function inc_margin() {
+    var m = parseFloat($('#content').css('margin-right')) * 1.1;
+    $('#content').css('margin-left', m);
+    $('#content').css('margin-right', m);
+    reset();
+    Cookies.set('margin', m);
+}
+
+function dec_margin() {
+    var m = parseFloat($('#content').css('margin-right')) * 0.9;
+    $('#content').css('margin-left', m);
+    $('#content').css('margin-right', m);
+    reset();
+    Cookies.set('margin', m);
+}
+
+function inc_lineheight() {
+    var l = parseFloat($('#content').css('line-height')) * 1.1;
+    $('#content').css('line-height', l + 'px');
+    reset();
+    Cookies.set('lineheight', l);
+}
+
+function dec_lineheight() {
+    var l = parseFloat($('#content').css('line-height')) * 0.9;
+    $('#content').css('line-height', l + 'px');
+    reset();
+    Cookies.set('lineheight', l);
+}
+
+function set_font(font) {
+    if (!$('#content-wrapper').hasClass(font)) {
+        $('#content-wrapper').removeClass('serif sans-serif').addClass(font);
+        reset();
+    }
+    Cookies.set('font', font);
+}
+
 //declare globals
 var st, max_lines, start, end;
 var total_lines = [];
