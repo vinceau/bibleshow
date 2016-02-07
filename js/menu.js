@@ -44,7 +44,6 @@ const PassageContent = React.createClass({
         }
         return (
         <div>
-            <button id="poop" onClick={this.nextPassage}>Poop</button>
             <h1 id="header">{headers[this.state.currentBlock]}</h1>
             <div id="content">
                 <div id="text_body">
@@ -69,7 +68,7 @@ const PassageScreen = React.createClass({
             this.setState({
                 passages: d.passages
             });
-        };
+        }.bind(this);
         var fail = function() {
             console.log('Failed to load passage(s).');
         };
@@ -86,11 +85,15 @@ const PassageScreen = React.createClass({
 
 const TopBar = React.createClass({
     render: function() {
+        var menuText = this.props.menuOpened ? 'close' : 'menu';
+        var menuClass = classNames('menu-icon', {
+            'active': this.props.menuOpened
+        });
         return (
             <div className="top-bar">
-                <div id="trigger-menu" className="menu-icon">
+                <div id="trigger-menu" onClick={this.props.onMenuClick} className={menuClass}>
                     <span></span>
-                    <div className="title">menu</div>
+                    <div className="title">{menuText}</div>
                 </div>
                 <div className="controls">
                     <div id="prev" title="Previous" className="control-button" ><span className="glyphicon glyphicon-triangle-left"></span></div>
@@ -107,7 +110,7 @@ const Pusher = React.createClass({
     render: function() {
         return (
         <div className="pusher">
-            <div className="menu" style={{display: 'none'}}>
+            <div className="menu">
                 <div className="menu-section nav-search">
                     <div className="form-title"><span className="mini-icon glyphicon glyphicon-search"></span>Search</div>
                     <form id="search_form">
@@ -201,16 +204,31 @@ const Pusher = React.createClass({
 });
 
 const MainContent = React.createClass({
+    getInitialState: function() {
+        return {
+            menuOpened: false,
+            search: 'Gen 1; Gen 3'
+        };
+    },
+    onMenuClick: function() {
+        this.setState({
+            menuOpened: !this.state.menuOpened
+        });
+    },
     render: function() {
+        var contClass = classNames({
+            'menu-open' : this.state.menuOpened
+        });
         return (
-        <div>
-            <TopBar />
+        <div id="container" className={contClass}>
+            <TopBar onMenuClick={this.onMenuClick}
+                    menuOpened={this.state.menuOpened} />
             <Pusher />
-            <PassageScreen search={'Gen 1; Gen 3'} />
+            <PassageScreen search={this.state.search} />
         </div>
         );
     }
 });
 
 
-ReactDOM.render(<MainContent />, document.getElementById('container'));
+ReactDOM.render(<MainContent />, document.getElementById('main-hook'));
