@@ -93,7 +93,7 @@ const Pusher = React.createClass({
                 <div className="menu-section nav-search">
                     <div className="form-title"><span className="mini-icon glyphicon glyphicon-search"></span>Search</div>
                     <form id="search_form" onSubmit={this.handleSubmit}>
-                        <input id="search" placeholder="Gen 1-2" type="text" />
+                        <input id="search" placeholder={this.props.defaultPassage} type="text" />
                         <button type="submit">
                             <i className="icon-search" aria-hidden="true" data-icon="⚲"></i>
                         </button>
@@ -213,7 +213,7 @@ const MainContent = React.createClass({
     componentWillMount: function() {
         var passage = Cookies.get('passage');
         if (!passage) {
-            passage = 'Gen 1';
+            passage = this.props.defaultPassage;
         }
         this.loadQuery(passage);
     },
@@ -225,7 +225,8 @@ const MainContent = React.createClass({
         <div id="container" className={contClass}>
             <TopBar onMenuClick={this.onMenuClick}
                     menuOpened={this.state.menuOpened} />
-            <Pusher onSearchSubmit={this.onSearchSubmit} />
+            <Pusher onSearchSubmit={this.onSearchSubmit}
+                    defaultPassage={this.props.defaultPassage} />
             <div id="content-wrapper" className="serif">
                 <PassageContent passages={this.state.passages} />
             </div>
@@ -235,4 +236,4 @@ const MainContent = React.createClass({
 });
 
 
-ReactDOM.render(<MainContent />, document.getElementById('main-hook'));
+ReactDOM.render(<MainContent defaultPassage="Gen 1-2" />, document.getElementById('main-hook'));
