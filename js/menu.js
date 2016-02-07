@@ -81,8 +81,10 @@ const Pusher = React.createClass({
     handleSubmit: function(e) {
         e.preventDefault();
         var query = $('#search').val();
-        this.props.onSearchSubmit(query);
-        $('#search').blur();
+        if (query) {
+            this.props.onSearchSubmit(query);
+            $('#search').blur();
+        }
     },
     render: function() {
         return (
