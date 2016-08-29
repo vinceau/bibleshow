@@ -1,7 +1,15 @@
 const BlockComponent = React.createClass({
+    componentDidUpdate: function() {
+        this.lineSplit();
+    },
     componentDidMount: function() {
-        console.log('block ' + this.props.bid + 'is mounted');
-//this.props.reset();
+        this.lineSplit();
+    },
+    lineSplit: function() {
+        var st = new SplitText('#block' + this.props.bid, {
+            type: 'lines',
+            linesClass: 'line line++',
+        });
     },
     render: function() {
         var id = 'block' + this.props.bid;
@@ -25,13 +33,6 @@ const PassageContent = React.createClass({
     nextPassage: function() {
         this.setState({
             currentBlock: this.state.currentBlock + 1
-        });
-        this.reset();
-    },
-    reset: function() {
-        var st = new SplitText('#block' + this.state.currentBlock, {
-            type: 'lines',
-            linesClass: 'line line++',
         });
     },
     render: function() {
