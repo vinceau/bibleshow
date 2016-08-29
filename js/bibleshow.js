@@ -181,10 +181,13 @@ function reset(hard) {
         st.split();
     }
     var lines = st.lines;
-    for (var i = 0; i < lines.length - 1; i++) {
-        var span = document.createElement('span');
-        span.className = 'justify-fix';
-        lines[i].appendChild(span);
+    for (var i = 0; i < lines.length; i++) {
+        if (lines[i].nextSibling) {
+            //only create justify-fix if it's not the last verse in a block
+            var span = document.createElement('span');
+            span.className = 'justify-fix';
+            lines[i].appendChild(span);
+        }
     }
     for (var i = 0; i < blocks.length; i++) {
         total_lines[i] = $('#block' + i + ' div').length;
