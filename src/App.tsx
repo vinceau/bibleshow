@@ -1,7 +1,8 @@
-import * as React from 'react';
-import './App.scss';
+import * as React from "react";
+import "./App.scss";
 
-import logo from './logo.svg';
+import { Counter } from "./components/Counter";
+import logo from "./logo.svg";
 
 class App extends React.Component {
   public render() {

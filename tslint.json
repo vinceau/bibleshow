@@ -8,10 +8,44 @@
     "exclude": [
       "config/**/*.js",
       "node_modules/**/*.ts",
-      "coverage/lcov-report/*.js"
+      "coverage/lcov-report/*.js",
+      "src/registerServiceWorker.ts"
     ]
   },
   "rules": {
-    "jsx-no-lambda": false
+    "quotemark": [
+      true,
+      "double",
+      "jsx-double"
+    ],
+    "interface-name": false,
+    "jsx-boolean-value": false,
+    "max-classes-per-file": false,
+    "no-console": false,
+    "no-empty-interface": false,
+    "no-var-requires": false,
+    "jsx-no-lambda": false,
+    "object-literal-sort-keys": false,
+    "no-implicit-dependencies": false,
+    "ordered-imports": true,
+    "no-object-literal-type-assertion": true,
+    "semicolon": true,
+    "eofline": true,
+    "no-non-null-assertion": true,
+    "ter-indent": false,
+    "space-before-function-paren": false,
+    "trailing-comma": true,
+    "strict-type-predicates": true,
+    "no-floating-promises": true,
+    "no-any": true,
+    "typedef": [
+      true
+    ],
+    "no-unused-variable": true,
+    "indent": [
+      true,
+      "spaces",
+      4
+    ]
   }
 }
