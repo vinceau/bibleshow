@@ -1,15 +1,16 @@
 import * as React from "react";
 import { Subscribe } from "unstated";
 
-import { CounterContainer } from "./Counter";
+import { AppStateContainer } from "../store";
 
 
 export const Screen = () => {
     return (
-        <Subscribe to={[CounterContainer]}>
-            {(counter: CounterContainer) => (
-                <div>
-                    <b>{counter.state.count}</b>
+        <Subscribe to={[AppStateContainer]}>
+            {(container: AppStateContainer) => (
+                <div className="screen">
+                    <h1>{container.state.query}</h1>
+                    <b>{JSON.stringify(container.state.passages)}</b>
                 </div>
             )}
         </Subscribe>

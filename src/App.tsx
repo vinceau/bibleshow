@@ -4,6 +4,7 @@ import { Provider } from "unstated";
 import "./App.scss";
 
 import { Counter } from "./components/Counter";
+import { Menu } from "./components/Menu";
 import { Screen } from "./components/Screen";
 import logo from "./logo.svg";
 
@@ -20,6 +21,7 @@ class App extends React.Component {
           <p className="App-intro">
             To get started, edit <code>src/App.tsx</code> and save to reload.
           </p>
+          <Menu />
           <Screen />
         </div>
       </Provider>

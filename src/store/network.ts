@@ -1,0 +1,18 @@
+import axios from "axios";
+
+import { PassageBlock, PassageResponseJSON } from "./types";
+
+const API = "https://niv84api.appspot.com/api/?passage=";
+
+const ErrorUnableToRetrievePassage = "Unable to retrieve passage.";
+
+export async function loadPassage(query: string): Promise<PassageBlock[]> {
+    try {
+        let response: PassageResponseJSON;
+        response = (await axios.get(`${API}${query}`)).data;
+        return response.passages;
+    } catch (error) {
+        console.error(error);
+        throw new Error(ErrorUnableToRetrievePassage);
+    }
+}
