@@ -15,10 +15,10 @@ export class AppContainer extends Container<AppState> {
 
     constructor() {
         super();
-        this.setPassage("Gen 1");
+        this.setPassages("Gen 1");
     }
 
-    public setPassage = async (query: string) => {
+    public setPassages = async (query: string) => {
         let passages: PassageBlock[] = [];
         let error: string | null = null;
         try {
