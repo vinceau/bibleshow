@@ -4,7 +4,6 @@ import { loadPassage } from "../../lib/network";
 import { PassageBlock } from "../../lib/types";
 import { AppState } from "../storeTypes";
 
-
 const initialState: AppState = {
     query: "",
     passages: [],
@@ -22,7 +21,7 @@ export class AppContainer extends Container<AppState> {
         } catch (err) {
             error = err;
         }
-        this.setState(oldState => ({
+        await this.setState(oldState => ({
             ...oldState,
             query,
             passages,

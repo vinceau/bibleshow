@@ -24,6 +24,7 @@
   ],
   "exclude": [
     "src/lib/**/*.js",
+    "src/registerServiceWorker.ts",
     "node_modules"
   ]
 }

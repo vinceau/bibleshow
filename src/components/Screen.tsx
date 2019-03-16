@@ -1,9 +1,8 @@
 import * as React from "react";
 
-import { AppContainer } from "../store/containers/appContainer";
-import { ScreenBody } from "./ScreenBody";
 import { connect, ConnectedProps } from "../store/connect";
-
+import { AppContainer } from "../store/containers/AppContainer";
+import { ScreenBody } from "./ScreenBody";
 
 class ScreenClass extends React.Component<ConnectedProps> {
     private readonly appContainer: AppContainer;
@@ -21,6 +20,6 @@ class ScreenClass extends React.Component<ConnectedProps> {
             </div>
         );
     }
-};
+}
 
 export const Screen = connect<ConnectedProps>([AppContainer])(ScreenClass);

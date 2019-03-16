@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { AppContainer } from "../store/containers/appContainer";
+import { connect, ConnectedProps } from "../store/connect";
+import { AppContainer } from "../store/containers/AppContainer";
 import { SearchBox } from "./SearchBox";
-import { ConnectedProps, connect } from "../store/connect";
 
 interface MenuProps extends ConnectedProps {
 }

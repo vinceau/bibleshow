@@ -1,2 +1,44 @@
 {
+    "extends": [
+        "tslint:recommended",
+        "tslint-config-prettier",
+        "tslint-config-standard",
+        "tslint-react"
+    ],
+    "linterOptions": {
+        "exclude": [
+            "src/**/*.js",
+            "src/registerServiceWorker.ts",
+            "node_modules"
+        ]
+    },
+    "rules": {
+        "quotemark": [
+            true,
+            "double",
+            "jsx-double"
+        ],
+        "interface-name": false,
+        "jsx-boolean-value": false,
+        "max-classes-per-file": false,
+        "no-console": false,
+        "no-empty-interface": false,
+        "no-var-requires": false,
+        "object-literal-sort-keys": false,
+        "no-implicit-dependencies": false,
+        "ordered-imports": true,
+        "no-object-literal-type-assertion": true,
+        "semicolon": true,
+        "eofline": true,
+        "no-non-null-assertion": true,
+        "ter-indent": false,
+        "space-before-function-paren": false,
+        "trailing-comma": true,
+        "strict-type-predicates": true,
+        "no-floating-promises": true,
+        "no-any": true,
+        "typedef": [true],
+        "indent": [true, "spaces", 4],
+        "jsx-no-lambda": false
+    }
 }

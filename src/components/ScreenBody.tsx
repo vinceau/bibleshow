@@ -18,6 +18,7 @@ interface ScreenBodyState {
  */
 
 export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState> {
+    // tslint:disable-next-line:no-any
     private splitText: any;
     private elementRef = React.createRef<HTMLDivElement>();
 

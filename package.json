@@ -7,6 +7,8 @@
     "unstated": "^2.1.1"
   },
   "scripts": {
+    "lint:ts": "tslint --project ./ -t stylish --quiet",
+    "lint": "yarn run --silent lint:ts",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -21,6 +23,10 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "^2.1.8",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "tslint-react": "^3.6.0",
     "typescript": "^3.3.3333"
   },
   "browserslist": [
