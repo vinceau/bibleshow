@@ -18,6 +18,7 @@ interface ScreenBodyState {
  */
 
 export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState> {
+    private splitText: any;
     private elementRef = React.createRef<HTMLDivElement>();
 
     constructor(props: ScreenBodyProps) {
@@ -30,12 +31,16 @@ export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState
     }
 
     public componentDidMount() {
-        // const splittingOptions = {
-        //     target: this.elementRef.current,
-        //     by: "lines",
-        // };
-        (window as any).res = new (window as any).SplitText(this.elementRef.current, { linesClass: "line++" });
         this.setState({ ready: true });
+        try {
+            const splittingOptions = {
+                type: "lines",
+                linesClass: "line line++",
+            };
+            this.splitText = new SplitText(this.elementRef.current, splittingOptions);
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     public render(): JSX.Element {
