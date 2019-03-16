@@ -1,11 +1,10 @@
 import * as React from "react";
 
-import { Subscribe } from "unstated";
-
 import { AppContainer } from "../store/containers/appContainer";
 import { SearchBox } from "./SearchBox";
+import { ConnectedProps, connect } from "../store/connect";
 
-interface MenuProps {
+interface MenuProps extends ConnectedProps {
 }
 
 interface MenuState {
@@ -14,14 +13,19 @@ interface MenuState {
 /**
  * Menu is a visual component for displaying
  */
-export class Menu extends React.Component<MenuProps, MenuState> {
+class MenuClass extends React.Component<MenuProps, MenuState> {
+    private readonly appContainer: AppContainer;
+
+    constructor(props: MenuProps) {
+        super(props);
+        [this.appContainer] = this.props.containers;
+    }
+
     public render(): JSX.Element {
         return (
-            <Subscribe to={[AppContainer]}>
-                {(state: AppContainer) => (
-                    <SearchBox handleSearch={async (query) => { await state.setPassage(query); }} />
-                )}
-            </Subscribe>
+            <SearchBox handleSearch={async (query) => { await this.appContainer.setPassage(query); }} />
         );
     }
 }
+
+export const Menu = connect<MenuProps>([AppContainer])(MenuClass);
