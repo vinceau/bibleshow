@@ -1,11 +1,17 @@
 import { Container } from "unstated";
 
-import { initialState } from "./initialState";
-import { loadPassage } from "./network";
-import { AppState, PassageBlock } from "./types";
+import { loadPassage } from "../../lib/network";
+import { PassageBlock } from "../../lib/types";
+import { AppState } from "../storeTypes";
 
 
-export class AppStateContainer extends Container<AppState> {
+const initialState: AppState = {
+    query: "",
+    passages: [],
+    error: null,
+};
+
+export class AppContainer extends Container<AppState> {
     public state = initialState;
 
     public setPassage = async (query: string) => {

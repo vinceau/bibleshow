@@ -3,25 +3,24 @@ import { Provider } from "unstated";
 
 import "./App.scss";
 
-import { Counter } from "./components/Counter";
-import { Menu } from "./components/Menu";
 import { Screen } from "./components/Screen";
-import logo from "./logo.svg";
+
+(window as any).SplitText = require("./lib/splittext");
+(window as any).fits = (el: HTMLElement) => {
+  const rect = el.getBoundingClientRect();
+  const top = rect.top + document.body.scrollTop;
+  const left = rect.left + document.body.scrollLeft;
+  const right = left + el.offsetWidth;
+  const bottom = top + el.offsetHeight;
+  const { clientWidth, clientHeight } = document.documentElement;
+  return (clientHeight >= bottom && clientWidth >= right);
+}
 
 class App extends React.Component {
   public render() {
     return (
       <Provider>
         <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <Counter />
-          <p className="App-intro">
-            To get started, edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <Menu />
           <Screen />
         </div>
       </Provider>

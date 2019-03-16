@@ -1,16 +1,17 @@
 import * as React from "react";
 import { Subscribe } from "unstated";
 
-import { AppStateContainer } from "../store";
+import { AppContainer } from "../store/containers/appContainer";
+import { ScreenBody } from "./ScreenBody";
 
 
 export const Screen = () => {
     return (
-        <Subscribe to={[AppStateContainer]}>
-            {(container: AppStateContainer) => (
+        <Subscribe to={[AppContainer]}>
+            {(container: AppContainer) => (
                 <div className="screen">
                     <h1>{container.state.query}</h1>
-                    <b>{JSON.stringify(container.state.passages)}</b>
+                    <ScreenBody text={JSON.stringify(container.state.passages)} />
                 </div>
             )}
         </Subscribe>

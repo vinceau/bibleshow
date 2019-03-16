@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { Subscribe } from "unstated";
 
-import { AppStateContainer } from "../store";
+import { AppContainer } from "../store/containers/appContainer";
 import { SearchBox } from "./SearchBox";
 
 interface MenuProps {
@@ -17,8 +17,8 @@ interface MenuState {
 export class Menu extends React.Component<MenuProps, MenuState> {
     public render(): JSX.Element {
         return (
-            <Subscribe to={[AppStateContainer]}>
-                {(state: AppStateContainer) => (
+            <Subscribe to={[AppContainer]}>
+                {(state: AppContainer) => (
                     <SearchBox handleSearch={async (query) => { await state.setPassage(query); }} />
                 )}
             </Subscribe>

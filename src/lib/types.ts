@@ -8,9 +8,3 @@ export interface PassageBlock {
         [verseNumber: string]: string;
     };
 }
-
-export interface AppState {
-    query: string;
-    passages: PassageBlock[];
-    error: string | null;
-}
