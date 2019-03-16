@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "ts-debounce": "^1.0.0",
+    "debounce": "^1.2.0",
     "unstated": "^2.1.1"
   },
   "scripts": {
@@ -16,6 +16,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@types/debounce": "^1.2.0",
     "@types/jest": "^23.3.14",
     "@types/node": "^10.14.1",
     "@types/react": "^16.8.8",

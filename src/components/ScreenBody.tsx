@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { debounce } from "ts-debounce";
+import { debounce } from "debounce";
 
 interface ScreenBodyProps {
 }
@@ -20,6 +20,7 @@ export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState
     // tslint:disable-next-line:no-any
     private splitText: any;
     private elementRef = React.createRef<HTMLDivElement>();
+    private onWindowResize: () => void;
 
     constructor(props: ScreenBodyProps) {
         super(props);
@@ -28,6 +29,9 @@ export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState
             currentSlide: 0,
             ready: false,
         };
+        this.onWindowResize = debounce(() => {
+            this.reset();
+        }, 100);
     }
 
     public componentWillUnmount() {
@@ -50,7 +54,6 @@ export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState
     }
 
     private reset = (hard?: boolean) => {
-        console.log(`reset called. hard: ${hard}`);
         try {
             if (hard) {
                 const splittingOptions = {
@@ -64,11 +67,6 @@ export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState
         } catch (err) {
             console.error(err);
         }
-    }
-
-    private onWindowResize = () => {
-        console.log("window resized");
-        debounce(this.reset, 200, { isImmediate: true })();
     }
 
     /*
