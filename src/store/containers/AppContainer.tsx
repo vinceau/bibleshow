@@ -7,6 +7,7 @@ import { AppState } from "../storeTypes";
 const initialState: AppState = {
     query: "",
     passages: [],
+    currentPassage: 0,
     error: null,
 };
 
@@ -16,6 +17,16 @@ export class AppContainer extends Container<AppState> {
     constructor() {
         super();
         this.setPassages("Gen 1");
+    }
+
+    public nextPassage = async () => {
+        const { currentPassage, passages } = this.state;
+        await this.setState({ currentPassage: Math.max(currentPassage + 1, passages.length - 1) });
+    }
+
+    public prevPassage = async () => {
+        const { currentPassage, passages } = this.state;
+        await this.setState({ currentPassage: Math.min(currentPassage - 1, 0) });
     }
 
     public setPassages = async (query: string) => {

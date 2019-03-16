@@ -13,10 +13,11 @@ class ScreenClass extends React.Component<ConnectedProps> {
     }
 
     public render() {
-        if (this.appContainer.state.passages.length === 0) {
+        const { passages, currentPassage } = this.appContainer.state;
+        if (passages.length === 0) {
             return <></>;
         }
-        const { title, verses } = this.appContainer.state.passages[0];
+        const { title, verses } = passages[currentPassage];
         return (
             <div className="screen">
                 <h1>{title}</h1>
