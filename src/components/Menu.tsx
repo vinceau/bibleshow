@@ -23,7 +23,11 @@ class MenuClass extends React.Component<MenuProps, MenuState> {
 
     public render(): JSX.Element {
         return (
-            <SearchBox handleSearch={async (query) => { await this.appContainer.setPassages(query); }} />
+            <div className="menu">
+                <SearchBox handleSearch={async (query) => { await this.appContainer.setPassages(query); }} />
+                <button onClick={this.appContainer.prevPassage}>Prev</button>
+                <button onClick={this.appContainer.nextPassage}>Next</button>
+            </div>
         );
     }
 }

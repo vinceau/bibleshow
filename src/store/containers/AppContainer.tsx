@@ -21,12 +21,20 @@ export class AppContainer extends Container<AppState> {
 
     public nextPassage = async () => {
         const { currentPassage, passages } = this.state;
-        await this.setState({ currentPassage: Math.max(currentPassage + 1, passages.length - 1) });
+        const nextPassage = Math.min(currentPassage + 1, passages.length - 1);
+        if (currentPassage !== nextPassage) {
+            console.log(`Setting next passage to: ${nextPassage}`);
+            await this.setState({ currentPassage: nextPassage });
+        }
     }
 
     public prevPassage = async () => {
-        const { currentPassage, passages } = this.state;
-        await this.setState({ currentPassage: Math.min(currentPassage - 1, 0) });
+        const { currentPassage } = this.state;
+        const prevPassage = Math.max(currentPassage - 1, 0);
+        if (currentPassage !== prevPassage) {
+            console.log(`Setting prev passage to: ${prevPassage}`);
+            await this.setState({ currentPassage: prevPassage });
+        }
     }
 
     public setPassages = async (query: string) => {
@@ -40,6 +48,7 @@ export class AppContainer extends Container<AppState> {
         }
         await this.setState(oldState => ({
             ...oldState,
+            currentPassage: 0,
             query,
             passages,
             error,
