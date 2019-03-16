@@ -23,7 +23,8 @@ export interface PassageResponseJSON {
 
 export interface PassageBlock {
     title: string;
-    verses: {
-        [verseNumber: string]: string;
-    };
+    verses: Array<{
+        text: string;
+        number: string;
+    }>;
 }

@@ -13,10 +13,16 @@ class ScreenClass extends React.Component<ConnectedProps> {
     }
 
     public render() {
+        if (this.appContainer.state.passages.length === 0) {
+            return <></>;
+        }
+        const { title, verses } = this.appContainer.state.passages[0];
         return (
             <div className="screen">
-                <h1>{this.appContainer.state.query}</h1>
-                <ScreenBody text={JSON.stringify(this.appContainer.state.passages)} />
+                <h1>{title}</h1>
+                <ScreenBody>
+                    <p>{verses.map((verse) => `${verse.number} ${verse.text} `)}</p>
+                </ScreenBody>
             </div>
         );
     }

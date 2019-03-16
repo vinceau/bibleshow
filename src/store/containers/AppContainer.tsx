@@ -13,11 +13,17 @@ const initialState: AppState = {
 export class AppContainer extends Container<AppState> {
     public state = initialState;
 
+    constructor() {
+        super();
+        this.setPassage("Gen 1");
+    }
+
     public setPassage = async (query: string) => {
         let passages: PassageBlock[] = [];
         let error: string | null = null;
         try {
             passages = await loadPassage(query);
+            console.log(passages);
         } catch (err) {
             error = err;
         }

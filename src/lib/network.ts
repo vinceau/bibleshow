@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { PassageBlock, PassageResponseJSON } from "./types";
 
-const API = "https://niv84api.appspot.com/api/?passage=";
+const API = "https://niv84api.appspot.com/api/v2/?passage=";
 
 const ErrorUnableToRetrievePassage = "Unable to retrieve passage.";
 
