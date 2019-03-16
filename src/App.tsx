@@ -3,6 +3,7 @@ import { Provider } from "unstated";
 
 import "./App.scss";
 
+import { Menu } from "./components/Menu";
 import { Screen } from "./components/Screen";
 
 class App extends React.Component {
@@ -11,6 +12,7 @@ class App extends React.Component {
       <Provider>
         <div className="App">
           <Screen />
+          <Menu />
         </div>
       </Provider>
     );
