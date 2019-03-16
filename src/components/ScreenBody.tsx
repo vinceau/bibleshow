@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { debounce } from "ts-debounce";
+
 interface ScreenBodyProps {
 }
 
@@ -28,17 +30,14 @@ export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState
         };
     }
 
+    public componentWillUnmount() {
+        window.removeEventListener("resize", this.onWindowResize);
+    }
+
     public componentDidMount() {
+        this.reset(true);
         this.setState({ ready: true });
-        try {
-            const splittingOptions = {
-                type: "lines",
-                linesClass: "line line++",
-            };
-            this.splitText = new SplitText(this.elementRef.current, splittingOptions);
-        } catch (err) {
-            console.error(err);
-        }
+        window.addEventListener("resize", this.onWindowResize);
     }
 
     public render(): JSX.Element {
@@ -48,6 +47,28 @@ export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState
                 {this.props.children}
             </div>
         );
+    }
+
+    private reset = (hard?: boolean) => {
+        console.log(`reset called. hard: ${hard}`);
+        try {
+            if (hard) {
+                const splittingOptions = {
+                    type: "lines",
+                    linesClass: "line line++",
+                };
+                this.splitText = new SplitText(this.elementRef.current, splittingOptions);
+            } else {
+                this.splitText.split();
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
+    private onWindowResize = () => {
+        console.log("window resized");
+        debounce(this.reset, 200, { isImmediate: true })();
     }
 
     /*

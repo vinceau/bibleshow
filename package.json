@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "ts-debounce": "^1.0.0",
     "unstated": "^2.1.1"
   },
   "scripts": {
