@@ -6,9 +6,6 @@ interface ScreenBodyProps {
 }
 
 interface ScreenBodyState {
-    // tslint:disable-next-line:no-any
-    split: any;
-    currentSlide: number;
     ready: boolean;
 }
 
@@ -25,8 +22,6 @@ export class ScreenBody extends React.Component<ScreenBodyProps, ScreenBodyState
     constructor(props: ScreenBodyProps) {
         super(props);
         this.state = {
-            split: "",
-            currentSlide: 0,
             ready: false,
         };
         this.onWindowResize = debounce(() => {
